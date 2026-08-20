@@ -305,7 +305,7 @@ const Home = () => {
                   select-none
                   object-contain
                   object-bottom
-                  
+                
                 "
               />
 
