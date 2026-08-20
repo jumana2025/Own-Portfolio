@@ -13,8 +13,10 @@
     "@emailjs/browser": "^4.4.1",
     "@tailwindcss/vite": "^4.1.18",
     "framer-motion": "^12.26.1",
+    "lucide-react": "^1.33.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "react-icons": "^5.7.0",
     "react-router-dom": "^7.12.0",
     "tailwindcss": "^4.1.18"
   },
