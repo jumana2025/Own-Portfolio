@@ -5,6 +5,9 @@ import { ArrowUpRight, Mail, Send } from "lucide-react";
 
 export const Contact = () => {
     const form = useRef();
+    const emailServiceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const emailTemplateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const emailPublicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
     const [loading, setLoading] = useState(false);
     const [sent, setSent] = useState(false);
@@ -21,13 +24,19 @@ export const Contact = () => {
         setSent(false);
         setError(false);
 
+        if (!emailServiceId || !emailTemplateId || !emailPublicKey) {
+            setError("The email service has not been configured yet. Please use the email link to get in touch.");
+            setLoading(false);
+            return;
+        }
+
         try {
             await emailjs.sendForm(
-                "YOUR_SERVICE_ID",
-                "YOUR_TEMPLATE_ID",
+                emailServiceId,
+                emailTemplateId,
                 form.current,
                 {
-                    publicKey: "YOUR_PUBLIC_KEY",
+                    publicKey: emailPublicKey,
                 }
             );
 
@@ -37,7 +46,7 @@ export const Contact = () => {
         } catch (error) {
             console.error("EmailJS Error:", error);
 
-            setError(true);
+            setError("Your message could not be sent. Please try again or email me directly.");
         } finally {
             setLoading(false);
         }
@@ -354,7 +363,7 @@ export const Contact = () => {
 
                                 <div>
 
-                                    <label
+                                    <label htmlFor="from_name"
                                         className="
                                             mb-2
                                             block
@@ -372,6 +381,7 @@ export const Contact = () => {
 
 
                                     <input
+                                        id="from_name"
                                         type="text"
                                         name="from_name"
                                         placeholder="Your name"
@@ -409,7 +419,7 @@ export const Contact = () => {
 
                                 <div>
 
-                                    <label
+                                    <label htmlFor="from_email"
                                         className="
                                             mb-2
                                             block
@@ -427,6 +437,7 @@ export const Contact = () => {
 
 
                                     <input
+                                        id="from_email"
                                         type="email"
                                         name="from_email"
                                         placeholder="your@email.com"
@@ -468,7 +479,7 @@ export const Contact = () => {
 
                             <div>
 
-                                <label
+                                <label htmlFor="message"
                                     className="
                                         mb-2
                                         block
@@ -486,6 +497,7 @@ export const Contact = () => {
 
 
                                 <textarea
+                                    id="message"
                                     name="message"
                                     rows="7"
                                     placeholder="Tell me about your project..."
@@ -570,8 +582,7 @@ export const Contact = () => {
                                         text-red-700
                                     "
                                 >
-                                    Something went wrong.
-                                    Please try again.
+                                    {error}
                                 </motion.p>
                             )}
 
