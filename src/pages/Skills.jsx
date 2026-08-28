@@ -92,22 +92,23 @@ const Skills = () => {
             id="skills"
             className="
                 relative
+                w-full
                 overflow-hidden
                 bg-[#F4EBDD]
                 text-[#241814]
             "
         >
-
-            {/* =====================================================
-                MAIN CONTAINER
-            ===================================================== */}
-
             <div
                 className="
                     mx-auto
+                    w-full
                     max-w-[1400px]
-                    px-6
-                    py-20
+
+                    px-5
+                    py-16
+
+                    sm:px-8
+                    sm:py-20
 
                     md:px-12
                     md:py-24
@@ -117,59 +118,47 @@ const Skills = () => {
                 "
             >
 
-                {/* =================================================
-                    HEADER
-                ================================================= */}
+                {/* HEADER */}
 
                 <motion.div
-                    initial={{
-                        opacity: 0,
-                        y: 30,
-                    }}
-                    whileInView={{
-                        opacity: 1,
-                        y: 0,
-                    }}
-                    viewport={{
-                        once: true,
-                        amount: 0.2,
-                    }}
-                    transition={{
-                        duration: 0.7,
-                        ease: [0.16, 1, 0.3, 1],
-                    }}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.7 }}
                     className="
                         flex
                         items-center
                         justify-between
                     "
                 >
-
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-2 sm:gap-3">
 
                         <span
                             className="
-                                h-2
-                                w-2
+                                h-1.5
+                                w-1.5
                                 rounded-full
                                 bg-[#7A263A]
+
+                                sm:h-2
+                                sm:w-2
                             "
                         />
 
                         <p
                             className="
-                                text-[9px]
-                                font-medium
+                                text-[8px]
                                 uppercase
-                                tracking-[0.3em]
+                                tracking-[0.25em]
                                 text-[#7A263A]
+
+                                sm:text-[9px]
                             "
                         >
                             Skills
                         </p>
 
                     </div>
-
 
                     <p
                         className="
@@ -188,39 +177,30 @@ const Skills = () => {
                 </motion.div>
 
 
-                {/* =================================================
-                    TITLE
-                ================================================= */}
+                {/* TITLE */}
 
                 <motion.div
-                    initial={{
-                        opacity: 0,
-                        y: 40,
-                    }}
-                    whileInView={{
-                        opacity: 1,
-                        y: 0,
-                    }}
-                    viewport={{
-                        once: true,
-                        amount: 0.2,
-                    }}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
                     transition={{
                         duration: 0.8,
                         delay: 0.1,
-                        ease: [0.16, 1, 0.3, 1],
                     }}
                     className="mt-8"
                 >
 
                     <h2
                         className="
+                            max-w-full
+                            overflow-hidden
+
                             font-black
                             uppercase
-                            leading-[0.82]
+                            leading-[0.85]
                             tracking-[-0.07em]
 
-                            text-[13vw]
+                            text-[clamp(3.8rem,15vw,10rem)]
 
                             sm:text-[11vw]
 
@@ -229,22 +209,23 @@ const Skills = () => {
                             lg:text-[6vw]
                         "
                     >
-                        My
+                        My{" "}
                         <span className="text-[#7A263A]">
-                            {" "}Skills.
+                            Skills.
                         </span>
                     </h2>
 
-
                     <p
                         className="
-                            mt-6
+                            mt-5
                             max-w-2xl
 
-                            text-sm
-                            leading-7
-
+                            text-[12px]
+                            leading-6
                             text-[#241814]/65
+
+                            sm:text-sm
+                            sm:leading-7
 
                             md:text-base
                         "
@@ -257,18 +238,17 @@ const Skills = () => {
                 </motion.div>
 
 
-                {/* =================================================
-                    SKILLS GRID
-                ================================================= */}
+                {/* SKILLS */}
 
                 <div
                     className="
-                        mt-12
+                        mt-10
 
                         grid
                         grid-cols-1
                         gap-3
 
+                        sm:mt-12
                         sm:grid-cols-2
 
                         lg:grid-cols-3
@@ -282,38 +262,33 @@ const Skills = () => {
                         return (
                             <motion.div
                                 key={skill.name}
-
                                 initial={{
                                     opacity: 0,
                                     y: 30,
                                 }}
-
                                 whileInView={{
                                     opacity: 1,
                                     y: 0,
                                 }}
-
                                 viewport={{
                                     once: true,
                                     amount: 0.15,
                                 }}
-
                                 transition={{
                                     duration: 0.6,
-                                    delay: index * 0.05,
-                                    ease: [0.16, 1, 0.3, 1],
+                                    delay: index * 0.04,
                                 }}
-
                                 className="
                                     group
-                                    relative
+                                    w-full
+                                    min-w-0
 
                                     border
                                     border-[#241814]/10
 
                                     bg-[#F4EBDD]
 
-                                    p-5
+                                    p-4
 
                                     transition-all
                                     duration-300
@@ -321,31 +296,20 @@ const Skills = () => {
                                     hover:-translate-y-1
                                     hover:border-[#7A263A]/40
                                     hover:bg-[#7A263A]
+
+                                    sm:p-5
                                 "
                             >
 
-                                {/* =================================================
-                                    TOP ROW
-                                ================================================= */}
-
-                                <div
-                                    className="
-                                        flex
-                                        items-start
-                                        justify-between
-                                    "
-                                >
-
-                                    {/* ICON */}
+                                <div className="flex items-start justify-between">
 
                                     <div
                                         className="
                                             flex
-                                            h-10
-                                            w-10
+                                            h-9
+                                            w-9
                                             items-center
                                             justify-center
-
                                             rounded-full
 
                                             border
@@ -358,24 +322,19 @@ const Skills = () => {
 
                                             group-hover:border-[#F4EBDD]/40
                                             group-hover:text-[#F4EBDD]
+
+                                            sm:h-10
+                                            sm:w-10
                                         "
                                     >
-                                        <Icon size={18} />
+                                        <Icon size={17} />
                                     </div>
-
-
-                                    {/* NUMBER */}
 
                                     <span
                                         className="
                                             text-[8px]
-                                            font-medium
                                             tracking-[0.2em]
-
                                             text-[#241814]/30
-
-                                            transition-colors
-                                            duration-300
 
                                             group-hover:text-[#F4EBDD]/50
                                         "
@@ -386,41 +345,35 @@ const Skills = () => {
                                 </div>
 
 
-                                {/* =================================================
-                                    NAME
-                                ================================================= */}
-
                                 <h3
                                     className="
-                                        mt-6
+                                        mt-5
 
-                                        text-sm
+                                        break-words
+
+                                        text-[13px]
                                         font-bold
                                         uppercase
-                                        tracking-[0.08em]
-
-                                        text-[#241814]
+                                        tracking-[0.07em]
 
                                         transition-colors
                                         duration-300
 
                                         group-hover:text-[#F4EBDD]
+
+                                        sm:text-sm
                                     "
                                 >
                                     {skill.name}
                                 </h3>
 
 
-                                {/* =================================================
-                                    DESCRIPTION
-                                ================================================= */}
-
                                 <p
                                     className="
-                                        mt-3
+                                        mt-2.5
 
-                                        text-xs
-                                        leading-6
+                                        text-[11px]
+                                        leading-5
 
                                         text-[#241814]/55
 
@@ -428,19 +381,18 @@ const Skills = () => {
                                         duration-300
 
                                         group-hover:text-[#F4EBDD]/75
+
+                                        sm:text-xs
+                                        sm:leading-6
                                     "
                                 >
                                     {skill.description}
                                 </p>
 
 
-                                {/* =================================================
-                                    BOTTOM LINE
-                                ================================================= */}
-
                                 <div
                                     className="
-                                        mt-5
+                                        mt-4
                                         h-px
                                         w-8
 
@@ -461,46 +413,45 @@ const Skills = () => {
                 </div>
 
 
-                {/* =================================================
-                    BOTTOM NOTE
-                ================================================= */}
+                {/* BOTTOM */}
 
                 <motion.div
-                    initial={{
-                        opacity: 0,
-                    }}
-                    whileInView={{
-                        opacity: 1,
-                    }}
-                    viewport={{
-                        once: true,
-                    }}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
                     transition={{
                         duration: 0.7,
                         delay: 0.3,
                     }}
                     className="
-                        mt-10
+                        mt-8
                         flex
+                        flex-wrap
                         items-center
                         gap-3
+
+                        sm:mt-10
                     "
                 >
 
                     <span
                         className="
                             h-px
-                            w-10
+                            w-8
                             bg-[#7A263A]
+
+                            sm:w-10
                         "
                     />
 
                     <p
                         className="
-                            text-[8px]
+                            text-[7px]
                             uppercase
-                            tracking-[0.25em]
+                            tracking-[0.18em]
                             text-[#241814]/40
+
+                            sm:text-[8px]
                         "
                     >
                         Always learning · Always building
@@ -509,7 +460,6 @@ const Skills = () => {
                 </motion.div>
 
             </div>
-
         </section>
     );
 };

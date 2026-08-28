@@ -1,52 +1,51 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import emailjs from "@emailjs/browser";
 import { ArrowUpRight, Mail, Send } from "lucide-react";
 
 export const Contact = () => {
-    const form = useRef();
-    const emailServiceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const emailTemplateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const emailPublicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
     const [loading, setLoading] = useState(false);
     const [sent, setSent] = useState(false);
-    const [error, setError] = useState(false);
-
-    /* =====================================================
-       SEND EMAIL
-    ===================================================== */
+    const [error, setError] = useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         setLoading(true);
         setSent(false);
-        setError(false);
-
-        if (!emailServiceId || !emailTemplateId || !emailPublicKey) {
-            setError("The email service has not been configured yet. Please use the email link to get in touch.");
-            setLoading(false);
-            return;
-        }
+        setError("");
 
         try {
-            await emailjs.sendForm(
-                emailServiceId,
-                emailTemplateId,
-                form.current,
+            const formData = new FormData(e.target);
+
+            formData.append(
+                "access_key",
+                import.meta.env.VITE_WEB3FORMS_ACCESS_KEY
+            );
+
+            const response = await fetch(
+                "https://api.web3forms.com/submit",
                 {
-                    publicKey: emailPublicKey,
+                    method: "POST",
+                    body: formData,
                 }
             );
 
-            setSent(true);
+            const result = await response.json();
 
-            form.current.reset();
-        } catch (error) {
-            console.error("EmailJS Error:", error);
+            if (result.success) {
+                setSent(true);
+                e.target.reset();
+            } else {
+                setError(
+                    "Your message could not be sent. Please try again."
+                );
+            }
+        } catch (err) {
+            console.error("Web3Forms Error:", err);
 
-            setError("Your message could not be sent. Please try again or email me directly.");
+            setError(
+                "Something went wrong. Please try again or email me directly."
+            );
         } finally {
             setLoading(false);
         }
@@ -58,47 +57,48 @@ export const Contact = () => {
             className="
                 relative
                 min-h-screen
+                w-full
                 overflow-hidden
+
                 bg-[#F4EBDD]
                 text-[#241814]
             "
         >
-
-            {/* =====================================================
-                CONTACT SECTION
-            ===================================================== */}
-
             <section
                 className="
                     relative
                     mx-auto
+
                     flex
                     min-h-screen
+                    w-full
                     max-w-[1400px]
                     items-center
 
-                    px-6
-                    py-24
+                    px-5
+                    py-20
+
+                    sm:px-8
+                    sm:py-24
 
                     md:px-12
+                    md:py-28
+
                     lg:px-16
                 "
             >
-
-                {/* =================================================
-                    BACKGROUND DECORATION
-                ================================================= */}
+                {/* DECORATION */}
 
                 <div
                     className="
                         pointer-events-none
-
                         absolute
-                        right-[-150px]
+
+                        right-[-180px]
                         top-1/2
 
-                        h-[500px]
-                        w-[500px]
+                        h-[300px]
+                        w-[300px]
 
                         -translate-y-1/2
 
@@ -107,24 +107,18 @@ export const Contact = () => {
                         bg-[#7A263A]/[0.035]
 
                         blur-3xl
+
+                        sm:h-[450px]
+                        sm:w-[450px]
+
+                        md:h-[500px]
+                        md:w-[500px]
                     "
                 />
 
-                {/* =================================================
-                    MAIN CONTENT
-                ================================================= */}
+                <div className="relative z-10 w-full">
 
-                <div
-                    className="
-                        relative
-                        z-10
-                        w-full
-                    "
-                >
-
-                    {/* =================================================
-                        TOP LABEL
-                    ================================================= */}
+                    {/* LABEL */}
 
                     <motion.div
                         initial={{
@@ -135,44 +129,39 @@ export const Contact = () => {
                             opacity: 1,
                             y: 0,
                         }}
-                        viewport={{
-                            once: true,
-                        }}
-                        transition={{
-                            duration: 0.7,
-                        }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.7 }}
                         className="
-                            mb-10
+                            mb-8
 
-                            text-[9px]
+                            text-[8px]
                             font-medium
                             uppercase
-                            tracking-[0.3em]
+                            tracking-[0.25em]
 
                             text-[#7A263A]
+
+                            sm:mb-10
                         "
                     >
                         Get in touch
                     </motion.div>
 
-
-                    {/* =================================================
-                        CONTENT GRID
-                    ================================================= */}
+                    {/* CONTENT */}
 
                     <div
                         className="
                             grid
-                            gap-16
+                            gap-12
+
+                            sm:gap-16
 
                             lg:grid-cols-[0.9fr_1.1fr]
                             lg:gap-24
                         "
                     >
 
-                        {/* =================================================
-                            LEFT SIDE
-                        ================================================= */}
+                        {/* LEFT */}
 
                         <motion.div
                             initial={{
@@ -183,41 +172,30 @@ export const Contact = () => {
                                 opacity: 1,
                                 x: 0,
                             }}
-                            viewport={{
-                                once: true,
-                            }}
+                            viewport={{ once: true }}
                             transition={{
                                 duration: 0.8,
                             }}
-                            className="
-                                flex
-                                flex-col
-                            "
+                            className="w-full"
                         >
-
-                            {/* =================================================
-                                DESCRIPTION
-                            ================================================= */}
 
                             <p
                                 className="
                                     max-w-md
 
-                                    text-sm
-                                    leading-7
+                                    text-[12px]
+                                    leading-6
 
                                     text-[#241814]/70
+
+                                    sm:text-sm
+                                    sm:leading-7
                                 "
                             >
                                 Have a project in mind, a collaboration idea,
                                 or just want to say hello? Send me a message
                                 and I'll get back to you as soon as possible.
                             </p>
-
-
-                            {/* =================================================
-                                LET'S TALK
-                            ================================================= */}
 
                             <motion.h2
                                 initial={{
@@ -228,24 +206,23 @@ export const Contact = () => {
                                     opacity: 1,
                                     y: 0,
                                 }}
-                                viewport={{
-                                    once: true,
-                                }}
+                                viewport={{ once: true }}
                                 transition={{
                                     duration: 0.8,
                                     delay: 0.15,
-                                    ease: [0.16, 1, 0.3, 1],
                                 }}
                                 className="
-                                    my-14
+                                    my-10
 
-                                    text-[16vw]
+                                    text-[clamp(4rem,17vw,9rem)]
+
                                     font-black
                                     uppercase
                                     leading-[0.78]
                                     tracking-[-0.07em]
 
-                                    text-[#241814]
+                                    sm:my-14
+                                    sm:text-[16vw]
 
                                     md:text-[11vw]
 
@@ -257,10 +234,7 @@ export const Contact = () => {
                                 talk.
                             </motion.h2>
 
-
-                            {/* =================================================
-                                EMAIL
-                            ================================================= */}
+                            {/* EMAIL */}
 
                             <div>
 
@@ -272,10 +246,10 @@ export const Contact = () => {
                                         items-center
                                         gap-3
 
-                                        text-[9px]
+                                        text-[8px]
                                         font-semibold
                                         uppercase
-                                        tracking-[0.2em]
+                                        tracking-[0.18em]
 
                                         text-[#7A263A]
                                     "
@@ -285,74 +259,69 @@ export const Contact = () => {
                                     Email
                                 </div>
 
-
                                 <a
                                     href="mailto:edv.jumana2007@gmail.com"
                                     className="
                                         inline-flex
+                                        max-w-full
                                         items-center
                                         gap-2
 
-                                        text-sm
-                                        font-medium
+                                        break-all
 
-                                        text-[#241814]
+                                        text-[12px]
+                                        font-medium
 
                                         transition-colors
                                         duration-300
 
                                         hover:text-[#7A263A]
+
+                                        sm:text-sm
                                     "
                                 >
                                     edv.jumana2007@gmail.com
 
-                                    <ArrowUpRight size={14} />
+                                    <ArrowUpRight
+                                        size={14}
+                                        className="shrink-0"
+                                    />
                                 </a>
 
                             </div>
 
                         </motion.div>
 
-
-                        {/* =================================================
-                            CONTACT FORM
-                        ================================================= */}
+                        {/* FORM */}
 
                         <motion.form
-                            ref={form}
                             onSubmit={handleSubmit}
-
                             initial={{
                                 opacity: 0,
                                 y: 40,
                             }}
-
                             whileInView={{
                                 opacity: 1,
                                 y: 0,
                             }}
-
-                            viewport={{
-                                once: true,
-                            }}
-
+                            viewport={{ once: true }}
                             transition={{
                                 duration: 0.9,
                                 delay: 0.1,
                             }}
-
                             className="
-                                space-y-7
+                                w-full
+                                min-w-0
+                                space-y-6
                             "
                         >
 
-                            {/* =================================================
-                                NAME + EMAIL
-                            ================================================= */}
+                            {/* NAME + EMAIL */}
 
                             <div
                                 className="
                                     grid
+                                    grid-cols-1
                                     gap-6
 
                                     md:grid-cols-2
@@ -361,17 +330,18 @@ export const Contact = () => {
 
                                 {/* NAME */}
 
-                                <div>
+                                <div className="w-full">
 
-                                    <label htmlFor="from_name"
+                                    <label
+                                        htmlFor="name"
                                         className="
                                             mb-2
                                             block
 
-                                            text-[9px]
+                                            text-[8px]
                                             font-semibold
                                             uppercase
-                                            tracking-[0.2em]
+                                            tracking-[0.18em]
 
                                             text-[#7A263A]
                                         "
@@ -379,14 +349,13 @@ export const Contact = () => {
                                         Your Name
                                     </label>
 
-
                                     <input
-                                        id="from_name"
+                                        id="name"
                                         type="text"
-                                        name="from_name"
+                                        name="name"
                                         placeholder="Your name"
                                         required
-
+                                        autoComplete="name"
                                         className="
                                             w-full
 
@@ -396,38 +365,36 @@ export const Contact = () => {
                                             bg-transparent
 
                                             px-0
-                                            py-4
+                                            py-3.5
 
-                                            text-sm
-                                            text-[#241814]
-
-                                            placeholder:text-[#241814]/40
+                                            text-[13px]
 
                                             outline-none
 
-                                            transition-all
-                                            duration-300
+                                            placeholder:text-[#241814]/40
 
                                             focus:border-[#7A263A]
+
+                                            sm:text-sm
                                         "
                                     />
 
                                 </div>
 
-
                                 {/* EMAIL */}
 
-                                <div>
+                                <div className="w-full">
 
-                                    <label htmlFor="from_email"
+                                    <label
+                                        htmlFor="email"
                                         className="
                                             mb-2
                                             block
 
-                                            text-[9px]
+                                            text-[8px]
                                             font-semibold
                                             uppercase
-                                            tracking-[0.2em]
+                                            tracking-[0.18em]
 
                                             text-[#7A263A]
                                         "
@@ -435,14 +402,13 @@ export const Contact = () => {
                                         Your Email
                                     </label>
 
-
                                     <input
-                                        id="from_email"
+                                        id="email"
                                         type="email"
-                                        name="from_email"
+                                        name="email"
                                         placeholder="your@email.com"
                                         required
-
+                                        autoComplete="email"
                                         className="
                                             w-full
 
@@ -452,19 +418,17 @@ export const Contact = () => {
                                             bg-transparent
 
                                             px-0
-                                            py-4
+                                            py-3.5
 
-                                            text-sm
-                                            text-[#241814]
-
-                                            placeholder:text-[#241814]/40
+                                            text-[13px]
 
                                             outline-none
 
-                                            transition-all
-                                            duration-300
+                                            placeholder:text-[#241814]/40
 
                                             focus:border-[#7A263A]
+
+                                            sm:text-sm
                                         "
                                     />
 
@@ -472,22 +436,20 @@ export const Contact = () => {
 
                             </div>
 
+                            {/* MESSAGE */}
 
-                            {/* =================================================
-                                MESSAGE
-                            ================================================= */}
+                            <div className="w-full">
 
-                            <div>
-
-                                <label htmlFor="message"
+                                <label
+                                    htmlFor="message"
                                     className="
                                         mb-2
                                         block
 
-                                        text-[9px]
+                                        text-[8px]
                                         font-semibold
                                         uppercase
-                                        tracking-[0.2em]
+                                        tracking-[0.18em]
 
                                         text-[#7A263A]
                                     "
@@ -495,14 +457,12 @@ export const Contact = () => {
                                     Message
                                 </label>
 
-
                                 <textarea
                                     id="message"
                                     name="message"
-                                    rows="7"
+                                    rows={6}
                                     placeholder="Tell me about your project..."
                                     required
-
                                     className="
                                         w-full
                                         resize-none
@@ -513,30 +473,25 @@ export const Contact = () => {
                                         bg-transparent
 
                                         px-0
-                                        py-4
+                                        py-3.5
 
-                                        text-sm
-                                        leading-7
-
-                                        text-[#241814]
-
-                                        placeholder:text-[#241814]/40
+                                        text-[13px]
+                                        leading-6
 
                                         outline-none
 
-                                        transition-all
-                                        duration-300
+                                        placeholder:text-[#241814]/40
 
                                         focus:border-[#7A263A]
+
+                                        sm:text-sm
+                                        sm:leading-7
                                     "
                                 />
 
                             </div>
 
-
-                            {/* =================================================
-                                SUCCESS MESSAGE
-                            ================================================= */}
+                            {/* SUCCESS */}
 
                             {sent && (
                                 <motion.p
@@ -548,9 +503,8 @@ export const Contact = () => {
                                         opacity: 1,
                                         y: 0,
                                     }}
-
                                     className="
-                                        text-sm
+                                        text-xs
                                         font-medium
                                         text-[#7A263A]
                                     "
@@ -560,10 +514,7 @@ export const Contact = () => {
                                 </motion.p>
                             )}
 
-
-                            {/* =================================================
-                                ERROR MESSAGE
-                            ================================================= */}
+                            {/* ERROR */}
 
                             {error && (
                                 <motion.p
@@ -575,9 +526,8 @@ export const Contact = () => {
                                         opacity: 1,
                                         y: 0,
                                     }}
-
                                     className="
-                                        text-sm
+                                        text-xs
                                         font-medium
                                         text-red-700
                                     "
@@ -586,20 +536,19 @@ export const Contact = () => {
                                 </motion.p>
                             )}
 
-
-                            {/* =================================================
-                                SEND BUTTON
-                            ================================================= */}
+                            {/* BUTTON */}
 
                             <button
                                 type="submit"
                                 disabled={loading}
-
                                 className="
                                     group
 
                                     inline-flex
+                                    w-full
+
                                     items-center
+                                    justify-center
                                     gap-3
 
                                     border
@@ -607,13 +556,13 @@ export const Contact = () => {
 
                                     bg-[#7A263A]
 
-                                    px-7
+                                    px-6
                                     py-4
 
-                                    text-[9px]
+                                    text-[8px]
                                     font-semibold
                                     uppercase
-                                    tracking-[0.2em]
+                                    tracking-[0.18em]
 
                                     text-[#F4EBDD]
 
@@ -625,6 +574,8 @@ export const Contact = () => {
 
                                     disabled:cursor-not-allowed
                                     disabled:opacity-60
+
+                                    sm:w-auto
                                 "
                             >
 

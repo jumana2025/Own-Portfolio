@@ -18,7 +18,6 @@ const projects = [
             "PostgreSQL",
         ],
     },
-
     {
         number: "02",
         title: "BOOKMA",
@@ -34,7 +33,6 @@ const projects = [
             "PostgreSQL",
         ],
     },
-
     {
         number: "03",
         title: "STHALAM",
@@ -61,20 +59,25 @@ const Projects = () => {
                 relative
                 w-full
                 overflow-hidden
+
                 bg-[#F4EBDD]
-                px-6
-                py-24
                 text-[#241814]
 
-                sm:px-10
-                md:px-16
-                lg:px-20
+                px-5
+                py-20
+
+                sm:px-8
+                sm:py-24
+
+                md:px-12
+                md:py-28
+
+                lg:px-16
+                xl:px-20
             "
         >
 
-            {/* =====================================================
-                SUBTLE BACKGROUND DECORATION
-            ===================================================== */}
+            {/* DECORATION */}
 
             <div
                 className="
@@ -82,100 +85,82 @@ const Projects = () => {
                     absolute
                     right-[-180px]
                     top-1/2
-
-                    h-[450px]
-                    w-[450px]
-
+                    h-[300px]
+                    w-[300px]
                     -translate-y-1/2
-
                     rounded-full
-
                     bg-[#7A263A]/[0.035]
-
                     blur-3xl
+
+                    sm:h-[400px]
+                    sm:w-[400px]
+
+                    md:h-[450px]
+                    md:w-[450px]
                 "
             />
 
 
-            {/* ================= HEADER ================= */}
+            {/* HEADER */}
 
             <div
                 className="
                     relative
                     z-10
                     flex
-                    items-end
-                    justify-between
+                    flex-col
+                    gap-6
+
+                    md:flex-row
+                    md:items-end
+                    md:justify-between
                 "
             >
 
-                <div>
-
-                    {/* SMALL LABEL */}
+                <div className="min-w-0">
 
                     <motion.p
-                        initial={{
-                            opacity: 0,
-                            y: 15,
-                        }}
-                        whileInView={{
-                            opacity: 1,
-                            y: 0,
-                        }}
-                        viewport={{
-                            once: true,
-                        }}
-                        transition={{
-                            duration: 0.6,
-                        }}
+                        initial={{ opacity: 0, y: 15 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
                         className="
                             text-[8px]
                             uppercase
-                            tracking-[0.4em]
+                            tracking-[0.3em]
                             text-[#7A263A]
+
+                            sm:text-[9px]
                         "
                     >
                         (03) Selected Work
                     </motion.p>
 
 
-                    {/* HEADING */}
-
                     <motion.h2
-                        initial={{
-                            opacity: 0,
-                            y: 25,
-                        }}
-                        whileInView={{
-                            opacity: 1,
-                            y: 0,
-                        }}
-                        viewport={{
-                            once: true,
-                        }}
+                        initial={{ opacity: 0, y: 25 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
                         transition={{
                             duration: 0.7,
                             ease: [0.16, 1, 0.3, 1],
                         }}
                         className="
-                            mt-7
-
+                            mt-5
+                            max-w-full
                             font-black
                             uppercase
                             leading-[0.85]
                             tracking-[-0.06em]
 
-                            text-[13vw]
+                            text-[clamp(3.5rem,13vw,10rem)]
 
                             sm:text-[10vw]
-
                             md:text-[7vw]
-
                             lg:text-[5.5vw]
                         "
                     >
                         Selected{" "}
-
                         <span className="text-[#7A263A]/35">
                             Projects.
                         </span>
@@ -184,20 +169,19 @@ const Projects = () => {
                 </div>
 
 
-                {/* SMALL DESCRIPTION */}
-
                 <p
                     className="
-                        hidden
                         max-w-[180px]
-                        text-right
+
+                        text-left
                         text-[8px]
                         uppercase
                         leading-5
                         tracking-[0.15em]
+
                         text-[#241814]/35
 
-                        md:block
+                        md:text-right
                     "
                 >
                     Three projects.
@@ -208,20 +192,26 @@ const Projects = () => {
             </div>
 
 
-            {/* ================= PROJECT GRID ================= */}
+            {/* PROJECT GRID */}
 
             <div
                 className="
                     relative
                     z-10
 
-                    mt-14
+                    mt-10
 
                     grid
                     grid-cols-1
                     gap-10
 
+                    sm:mt-14
+                    sm:gap-12
+
                     md:grid-cols-3
+                    md:gap-6
+
+                    lg:gap-8
                 "
             >
 
@@ -230,35 +220,27 @@ const Projects = () => {
                     <motion.button
                         key={project.title}
                         type="button"
-
+                        onClick={() => setSelectedProject(project)}
                         initial={{
                             opacity: 0,
                             y: 35,
                         }}
-
                         whileInView={{
                             opacity: 1,
                             y: 0,
                         }}
-
                         viewport={{
                             once: true,
                             amount: 0.2,
                         }}
-
                         transition={{
                             duration: 0.6,
                             delay: index * 0.1,
-                            ease: [0.16, 1, 0.3, 1],
                         }}
-
-                        onClick={() =>
-                            setSelectedProject(project)
-                        }
-
                         className="
                             group
                             w-full
+                            min-w-0
 
                             border-none
                             bg-transparent
@@ -266,11 +248,10 @@ const Projects = () => {
 
                             text-left
                             outline-none
-                            focus:outline-none
                         "
                     >
 
-                        {/* ================= IMAGE ================= */}
+                        {/* IMAGE */}
 
                         <div
                             className="
@@ -279,10 +260,10 @@ const Projects = () => {
                                 w-full
                                 overflow-hidden
 
-                                bg-[#E8DCCF]
-
                                 border
                                 border-[#241814]/10
+
+                                bg-[#E8DCCF]
                             "
                         >
 
@@ -290,17 +271,15 @@ const Projects = () => {
                                 src={project.image}
                                 alt={project.title}
                                 draggable="false"
-
+                                loading="lazy"
                                 className="
                                     h-full
                                     w-full
                                     object-cover
-
                                     grayscale
 
                                     transition-all
                                     duration-700
-                                    ease-out
 
                                     group-hover:scale-[1.04]
                                     group-hover:grayscale-0
@@ -308,16 +287,12 @@ const Projects = () => {
                             />
 
 
-                            {/* IMAGE OVERLAY */}
-
                             <div
                                 className="
                                     pointer-events-none
                                     absolute
                                     inset-0
-
                                     bg-[#7A263A]/0
-
                                     transition-all
                                     duration-500
 
@@ -331,8 +306,8 @@ const Projects = () => {
                             <span
                                 className="
                                     absolute
-                                    left-4
-                                    top-4
+                                    left-3
+                                    top-3
 
                                     flex
                                     h-7
@@ -346,10 +321,10 @@ const Projects = () => {
 
                                     text-[8px]
                                     font-semibold
-
                                     text-[#7A263A]
 
-                                    backdrop-blur-sm
+                                    sm:left-4
+                                    sm:top-4
                                 "
                             >
                                 {project.number}
@@ -361,14 +336,12 @@ const Projects = () => {
                             <span
                                 className="
                                     absolute
-                                    bottom-4
-                                    right-4
+                                    bottom-3
+                                    right-3
 
                                     flex
                                     h-9
                                     w-9
-
-                                    translate-y-3
                                     items-center
                                     justify-center
 
@@ -377,13 +350,17 @@ const Projects = () => {
                                     bg-[#7A263A]
                                     text-[#F4EBDD]
 
-                                    opacity-0
+                                    sm:bottom-4
+                                    sm:right-4
 
-                                    transition-all
-                                    duration-300
+                                    md:translate-y-3
+                                    md:opacity-0
 
-                                    group-hover:translate-y-0
-                                    group-hover:opacity-100
+                                    md:transition-all
+                                    md:duration-300
+
+                                    md:group-hover:translate-y-0
+                                    md:group-hover:opacity-100
                                 "
                             >
                                 <ArrowUpRight size={14} />
@@ -392,7 +369,7 @@ const Projects = () => {
                         </div>
 
 
-                        {/* ================= PROJECT INFO ================= */}
+                        {/* INFO */}
 
                         <div className="pt-4">
 
@@ -401,43 +378,37 @@ const Projects = () => {
                                     flex
                                     items-start
                                     justify-between
-                                    gap-4
+                                    gap-3
                                 "
                             >
 
-                                <div>
-
-                                    {/* CATEGORY */}
+                                <div className="min-w-0">
 
                                     <p
                                         className="
+                                            truncate
                                             text-[7px]
                                             uppercase
-                                            tracking-[0.25em]
+                                            tracking-[0.2em]
                                             text-[#7A263A]
                                         "
                                     >
                                         {project.category}
                                     </p>
 
-
-                                    {/* TITLE */}
-
                                     <h3
                                         className="
                                             mt-1.5
-
-                                            text-[15px]
+                                            text-[14px]
                                             font-bold
                                             uppercase
                                             tracking-[-0.02em]
 
-                                            text-[#241814]
-
                                             transition-colors
-                                            duration-300
 
                                             group-hover:text-[#7A263A]
+
+                                            sm:text-[15px]
                                         "
                                     >
                                         {project.title}
@@ -446,14 +417,11 @@ const Projects = () => {
                                 </div>
 
 
-                                {/* YEAR */}
-
                                 <span
                                     className="
+                                        shrink-0
                                         pt-1
-
                                         text-[8px]
-
                                         text-[#241814]/30
                                     "
                                 >
@@ -471,35 +439,17 @@ const Projects = () => {
             </div>
 
 
-            {/* =====================================================
-                PROJECT DETAILS MODAL
-            ====================================================== */}
+            {/* MODAL */}
 
             <AnimatePresence>
 
                 {selectedProject && (
 
                     <motion.div
-                        initial={{
-                            opacity: 0,
-                        }}
-
-                        animate={{
-                            opacity: 1,
-                        }}
-
-                        exit={{
-                            opacity: 0,
-                        }}
-
-                        transition={{
-                            duration: 0.25,
-                        }}
-
-                        onClick={() =>
-                            setSelectedProject(null)
-                        }
-
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onClick={() => setSelectedProject(null)}
                         className="
                             fixed
                             inset-0
@@ -509,11 +459,14 @@ const Projects = () => {
                             items-center
                             justify-center
 
+                            overflow-y-auto
+
                             bg-[#241814]/70
 
-                            p-4
-
+                            p-3
                             backdrop-blur-md
+
+                            sm:p-5
                         "
                     >
 
@@ -523,32 +476,22 @@ const Projects = () => {
                                 y: 40,
                                 scale: 0.96,
                             }}
-
                             animate={{
                                 opacity: 1,
                                 y: 0,
                                 scale: 1,
                             }}
-
                             exit={{
                                 opacity: 0,
                                 y: 30,
                                 scale: 0.97,
                             }}
-
-                            transition={{
-                                duration: 0.4,
-                                ease: [0.16, 1, 0.3, 1],
-                            }}
-
-                            onClick={(event) =>
-                                event.stopPropagation()
-                            }
-
+                            onClick={(e) => e.stopPropagation()}
                             className="
                                 relative
+                                my-4
 
-                                max-h-[90vh]
+                                max-h-[94vh]
                                 w-full
                                 max-w-[850px]
 
@@ -556,28 +499,25 @@ const Projects = () => {
 
                                 bg-[#F4EBDD]
 
-                                p-6
+                                p-5
 
                                 sm:p-8
                                 md:p-10
                             "
                         >
 
-                            {/* CLOSE BUTTON */}
+                            {/* CLOSE */}
 
                             <button
                                 type="button"
-
                                 onClick={() =>
                                     setSelectedProject(null)
                                 }
-
                                 aria-label="Close project"
-
                                 className="
                                     absolute
-                                    right-5
-                                    top-5
+                                    right-3
+                                    top-3
                                     z-20
 
                                     flex
@@ -595,21 +535,19 @@ const Projects = () => {
                                     duration-300
 
                                     hover:bg-[#241814]
-                                    hover:scale-110
                                 "
                             >
                                 <X size={14} />
                             </button>
 
 
-                            {/* PROJECT NUMBER */}
-
                             <p
                                 className="
+                                    pr-10
+
                                     text-[8px]
                                     uppercase
-                                    tracking-[0.35em]
-
+                                    tracking-[0.3em]
                                     text-[#7A263A]
                                 "
                             >
@@ -617,60 +555,52 @@ const Projects = () => {
                             </p>
 
 
-                            {/* TITLE */}
-
                             <h2
                                 className="
-                                    mt-5
-                                    max-w-[700px]
+                                    mt-4
+                                    pr-8
 
                                     font-black
                                     uppercase
                                     leading-[0.85]
                                     tracking-[-0.06em]
 
-                                    text-[#241814]
+                                    text-[clamp(2.2rem,10vw,5rem)]
                                 "
-                                style={{
-                                    fontFamily:
-                                        "Arial Narrow, Impact, sans-serif",
-                                    fontSize:
-                                        "clamp(2.5rem, 6vw, 5rem)",
-                                }}
                             >
                                 {selectedProject.title}
-
                                 <span className="text-[#7A263A]/40">
                                     .
                                 </span>
                             </h2>
 
 
-                            {/* IMAGE */}
+                            {/* MODAL IMAGE */}
 
                             <div
                                 className="
-                                    mt-8
+                                    mt-6
+                                    w-full
                                     overflow-hidden
-
-                                    bg-[#E8DCCF]
 
                                     border
                                     border-[#241814]/10
+                                    bg-[#E8DCCF]
+
+                                    sm:mt-8
                                 "
                             >
-
                                 <img
                                     src={selectedProject.image}
                                     alt={selectedProject.title}
-
                                     className="
                                         block
+                                        h-auto
+                                        max-h-[55vh]
                                         w-full
                                         object-cover
                                     "
                                 />
-
                             </div>
 
 
@@ -678,16 +608,16 @@ const Projects = () => {
 
                             <div
                                 className="
-                                    mt-8
+                                    mt-7
 
                                     grid
-                                    gap-8
+                                    grid-cols-1
+                                    gap-7
 
+                                    sm:mt-8
                                     md:grid-cols-2
                                 "
                             >
-
-                                {/* ABOUT */}
 
                                 <div>
 
@@ -696,24 +626,22 @@ const Projects = () => {
                                             text-[8px]
                                             font-bold
                                             uppercase
-                                            tracking-[0.3em]
-
+                                            tracking-[0.25em]
                                             text-[#7A263A]
                                         "
                                     >
                                         About
                                     </p>
 
-
                                     <p
                                         className="
                                             mt-3
-                                            max-w-[450px]
-
-                                            text-xs
-                                            leading-6
-
+                                            text-[11px]
+                                            leading-5
                                             text-[#241814]/60
+
+                                            sm:text-xs
+                                            sm:leading-6
                                         "
                                     >
                                         {selectedProject.description}
@@ -722,8 +650,6 @@ const Projects = () => {
                                 </div>
 
 
-                                {/* TECHNOLOGIES */}
-
                                 <div>
 
                                     <p
@@ -731,51 +657,42 @@ const Projects = () => {
                                             text-[8px]
                                             font-bold
                                             uppercase
-                                            tracking-[0.3em]
-
+                                            tracking-[0.25em]
                                             text-[#7A263A]
                                         "
                                     >
                                         Technologies
                                     </p>
 
-
                                     <div
                                         className="
                                             mt-3
                                             flex
                                             flex-wrap
-                                            gap-2
+                                            gap-1.5
                                         "
                                     >
 
                                         {selectedProject.technologies.map(
                                             (technology) => (
-
                                                 <span
                                                     key={technology}
-
                                                     className="
                                                         rounded-full
-
-                                                        border
-                                                        border-[#7A263A]/30
-
                                                         bg-[#7A263A]
 
-                                                        px-3
+                                                        px-2.5
                                                         py-1.5
 
                                                         text-[7px]
                                                         uppercase
-                                                        tracking-[0.12em]
+                                                        tracking-[0.1em]
 
                                                         text-[#F4EBDD]
                                                     "
                                                 >
                                                     {technology}
                                                 </span>
-
                                             )
                                         )}
 
@@ -786,26 +703,18 @@ const Projects = () => {
                             </div>
 
 
-                            {/* CLOSE */}
-
                             <button
                                 type="button"
-
                                 onClick={() =>
                                     setSelectedProject(null)
                                 }
-
                                 className="
-                                    mt-10
+                                    mt-8
 
                                     text-[8px]
                                     uppercase
-                                    tracking-[0.25em]
-
+                                    tracking-[0.2em]
                                     text-[#7A263A]
-
-                                    transition-colors
-                                    duration-300
 
                                     hover:text-[#241814]
                                 "

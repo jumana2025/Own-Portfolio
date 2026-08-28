@@ -11,17 +11,21 @@ import Contact from "./pages/Contact";
 function App() {
   return (
     <Router>
-      <Navbar />
+      <div className="relative w-full min-w-0 max-w-full overflow-x-hidden">
 
-      <Home />
+        {/* NAVBAR */}
+        <Navbar />
 
-      <About />
+        {/* MAIN CONTENT */}
+        <main className="relative w-full min-w-0 max-w-full overflow-x-hidden">
+          <Home />
+          <About />
+          <Skills />
+          <Projects />
+          <Contact />
+        </main>
 
-      <Skills />
-
-      <Projects />
-      <Contact />
-
+      </div>
     </Router>
   );
 }

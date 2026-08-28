@@ -149,7 +149,8 @@ const SkillsProjects = () => {
         <main
             className="
                 w-full
-                overflow-hidden
+                max-w-full
+                overflow-x-hidden
                 bg-[#f8f8f6]
                 text-[#111]
             "
@@ -161,41 +162,71 @@ const SkillsProjects = () => {
 
             <section
                 id="skills"
-                className="border-t border-black"
+                className="
+                    w-full
+                    border-t
+                    border-black
+                "
             >
 
-                {/* HEADER */}
+                {/* =================================================
+                    HEADER
+                ================================================= */}
 
                 <div
                     className="
-                        px-6
-                        pt-16
-                        sm:px-10
+                        w-full
+                        px-5
+                        pt-14
+
+                        sm:px-8
+                        sm:pt-16
+
                         md:px-16
+
                         lg:px-20
                     "
                 >
 
-                    <div className="flex items-center justify-between">
+                    <div
+                        className="
+                            flex
+                            w-full
+                            items-center
+                            justify-between
+                            gap-4
+                        "
+                    >
 
                         <p
                             className="
-                                text-[8px]
+                                shrink-0
+
+                                text-[7px]
                                 font-medium
                                 uppercase
-                                tracking-[0.4em]
+                                tracking-[0.35em]
+
+                                sm:text-[8px]
+                                sm:tracking-[0.4em]
                             "
                         >
                             (02) Skills
                         </p>
 
+
                         <p
                             className="
                                 hidden
+
+                                max-w-[180px]
+
+                                text-right
                                 text-[8px]
                                 uppercase
                                 tracking-[0.3em]
                                 text-black/35
+
                                 sm:block
                             "
                         >
@@ -205,7 +236,9 @@ const SkillsProjects = () => {
                     </div>
 
 
-                    {/* SMALL HEADING */}
+                    {/* =================================================
+                        HEADING
+                    ================================================= */}
 
                     <motion.h2
                         initial={{
@@ -223,19 +256,22 @@ const SkillsProjects = () => {
                             duration: 0.6,
                         }}
                         className="
-                            mt-8
+                            mt-7
                             max-w-[700px]
+
                             font-black
                             uppercase
                             leading-[0.85]
                             tracking-[-0.06em]
+
+                            text-[clamp(2.8rem,13vw,5rem)]
+
+                            sm:mt-8
+                            sm:text-[clamp(3rem,8vw,5rem)]
                         "
                         style={{
                             fontFamily:
                                 "Arial Narrow, Impact, sans-serif",
-
-                            fontSize:
-                                "clamp(2.8rem, 5vw, 5rem)",
                         }}
                     >
                         Tools I use
@@ -254,11 +290,17 @@ const SkillsProjects = () => {
                 <div
                     className="
                         relative
-                        mt-10
+                        mt-8
+                        w-full
                         overflow-hidden
+
                         border-y
                         border-black
-                        py-5
+
+                        py-4
+
+                        sm:mt-10
+                        sm:py-5
                     "
                 >
 
@@ -272,10 +314,14 @@ const SkillsProjects = () => {
                             top-0
                             z-10
                             h-full
-                            w-20
+
+                            w-10
+
                             bg-gradient-to-r
                             from-[#f8f8f6]
                             to-transparent
+
+                            sm:w-20
                         "
                     />
 
@@ -290,10 +336,14 @@ const SkillsProjects = () => {
                             top-0
                             z-10
                             h-full
-                            w-20
+
+                            w-10
+
                             bg-gradient-to-l
                             from-[#f8f8f6]
                             to-transparent
+
+                            sm:w-20
                         "
                     />
 
@@ -301,7 +351,11 @@ const SkillsProjects = () => {
                     {/* MOVING TRACK */}
 
                     <motion.div
-                        className="flex w-max"
+                        className="
+                            flex
+                            w-max
+                            will-change-transform
+                        "
                         animate={{
                             x: ["0%", "-50%"],
                         }}
@@ -324,12 +378,18 @@ const SkillsProjects = () => {
                                         className="
                                             group
                                             flex
+                                            shrink-0
                                             items-center
-                                            gap-3
+                                            gap-2
+
                                             border-r
                                             border-black/10
-                                            px-6
+
+                                            px-4
+
+                                            sm:gap-3
                                             sm:px-8
+
                                             md:px-10
                                         "
                                     >
@@ -339,52 +399,80 @@ const SkillsProjects = () => {
                                         <div
                                             className="
                                                 flex
-                                                h-8
-                                                w-8
+                                                h-7
+                                                w-7
                                                 shrink-0
                                                 items-center
                                                 justify-center
+
                                                 rounded-full
+
                                                 border
                                                 border-black/15
+
                                                 transition-all
                                                 duration-300
+
                                                 group-hover:border-black
                                                 group-hover:bg-black
                                                 group-hover:text-white
+
+                                                sm:h-8
+                                                sm:w-8
                                             "
                                         >
 
-                                            <Icon className="text-sm" />
+                                            <Icon
+                                                className="
+                                                    text-[13px]
+
+                                                    sm:text-sm
+                                                "
+                                            />
 
                                         </div>
 
 
                                         {/* NAME + DESCRIPTION */}
 
-                                        <div className="flex flex-col">
+                                        <div
+                                            className="
+                                                flex
+                                                min-w-0
+                                                flex-col
+                                            "
+                                        >
 
                                             <span
                                                 className="
                                                     whitespace-nowrap
-                                                    text-xs
+
+                                                    text-[10px]
                                                     font-semibold
                                                     uppercase
                                                     tracking-tight
+
+                                                    sm:text-xs
+
                                                     md:text-sm
                                                 "
                                             >
                                                 {skill.name}
                                             </span>
 
+
                                             <span
                                                 className="
                                                     mt-0.5
                                                     whitespace-nowrap
-                                                    text-[7px]
+
+                                                    text-[6px]
                                                     uppercase
-                                                    tracking-[0.18em]
+                                                    tracking-[0.15em]
                                                     text-black/35
+
+                                                    sm:text-[7px]
+                                                    sm:tracking-[0.18em]
                                                 "
                                             >
                                                 {skill.description}
@@ -412,15 +500,23 @@ const SkillsProjects = () => {
             <section
                 id="projects"
                 className="
-                    px-6
-                    py-16
-                    sm:px-10
+                    w-full
+
+                    px-5
+                    py-14
+
+                    sm:px-8
+                    sm:py-16
+
                     md:px-16
+
                     lg:px-20
                 "
             >
 
-                {/* HEADER */}
+                {/* =================================================
+                    PROJECT HEADER
+                ================================================= */}
 
                 <div
                     className="
@@ -428,19 +524,27 @@ const SkillsProjects = () => {
                         flex-col
                         justify-between
                         gap-5
+
                         md:flex-row
                         md:items-end
                     "
                 >
 
-                    <div>
+                    <div
+                        className="
+                            min-w-0
+                        "
+                    >
 
                         <p
                             className="
-                                text-[8px]
+                                text-[7px]
                                 font-medium
                                 uppercase
-                                tracking-[0.4em]
+                                tracking-[0.35em]
+
+                                sm:text-[8px]
+                                sm:tracking-[0.4em]
                             "
                         >
                             (03) Selected Work
@@ -463,18 +567,23 @@ const SkillsProjects = () => {
                                 duration: 0.6,
                             }}
                             className="
-                                mt-6
+                                mt-5
+
+                                max-w-full
+
                                 font-black
                                 uppercase
                                 leading-[0.85]
                                 tracking-[-0.06em]
+
+                                text-[clamp(2.8rem,13vw,5rem)]
+
+                                sm:mt-6
+                                sm:text-[clamp(3rem,8vw,5rem)]
                             "
                             style={{
                                 fontFamily:
                                     "Arial Narrow, Impact, sans-serif",
-
-                                fontSize:
-                                    "clamp(2.8rem, 5vw, 5rem)",
                             }}
                         >
                             Selected
@@ -489,11 +598,15 @@ const SkillsProjects = () => {
                     <p
                         className="
                             max-w-[200px]
-                            text-[8px]
+
+                            text-[7px]
                             uppercase
                             leading-5
-                            tracking-[0.18em]
+                            tracking-[0.15em]
                             text-black/35
+
+                            sm:text-[8px]
+                            sm:tracking-[0.18em]
                         "
                     >
                         Three projects.
@@ -512,10 +625,15 @@ const SkillsProjects = () => {
 
                 <div
                     className="
-                        mt-10
+                        mt-8
+
                         grid
                         grid-cols-1
-                        gap-5
+                        gap-8
+
+                        sm:mt-10
+                        sm:gap-5
+
                         md:grid-cols-3
                     "
                 >
@@ -525,42 +643,56 @@ const SkillsProjects = () => {
 
                             <motion.button
                                 key={project.title}
+
+                                type="button"
+
                                 initial={{
                                     opacity: 0,
                                     y: 30,
                                 }}
+
                                 whileInView={{
                                     opacity: 1,
                                     y: 0,
                                 }}
+
                                 viewport={{
                                     once: true,
+                                    amount: 0.15,
                                 }}
+
                                 transition={{
                                     duration: 0.5,
                                     delay: index * 0.1,
                                 }}
+
                                 onClick={() =>
-                                    setSelectedProject(
-                                        project
-                                    )
+                                    setSelectedProject(project)
                                 }
+
                                 className="
                                     group
+                                    block
                                     w-full
+                                    min-w-0
                                     text-left
                                     outline-none
+                                    focus:outline-none
                                 "
                             >
 
-                                {/* IMAGE */}
+                                {/* =================================================
+                                    IMAGE
+                                ================================================== */}
 
                                 <div
                                     className="
                                         relative
-                                        aspect-[4/3]
+                                        w-full
                                         overflow-hidden
                                         bg-[#e9e9e6]
+
+                                        aspect-[4/3]
                                     "
                                 >
 
@@ -568,14 +700,19 @@ const SkillsProjects = () => {
                                         src={project.image}
                                         alt={project.title}
                                         draggable="false"
+
                                         className="
+                                            block
                                             h-full
                                             w-full
                                             object-cover
+
                                             grayscale
+
                                             transition-all
                                             duration-700
                                             ease-out
+
                                             group-hover:scale-[1.04]
                                             group-hover:grayscale-0
                                         "
@@ -589,15 +726,24 @@ const SkillsProjects = () => {
                                             absolute
                                             left-3
                                             top-3
+
                                             flex
-                                            h-7
-                                            w-7
+                                            h-6
+                                            w-6
+
                                             items-center
                                             justify-center
+
                                             rounded-full
+
                                             bg-white
-                                            text-[8px]
+
+                                            text-[7px]
                                             font-bold
+
+                                            sm:h-7
+                                            sm:w-7
+                                            sm:text-[8px]
                                         "
                                     >
                                         {project.number}
@@ -609,23 +755,36 @@ const SkillsProjects = () => {
                                     <div
                                         className="
                                             absolute
-                                            bottom-4
-                                            right-4
+                                            bottom-3
+                                            right-3
+
                                             flex
-                                            h-9
-                                            w-9
+                                            h-8
+                                            w-8
+
                                             translate-y-2
+
                                             items-center
                                             justify-center
+
                                             rounded-full
+
                                             bg-black
                                             text-sm
                                             text-white
+
                                             opacity-0
+
                                             transition-all
                                             duration-300
+
                                             group-hover:translate-y-0
                                             group-hover:opacity-100
+
+                                            sm:bottom-4
+                                            sm:right-4
+                                            sm:h-9
+                                            sm:w-9
                                         "
                                     >
                                         ↗
@@ -634,46 +793,70 @@ const SkillsProjects = () => {
                                 </div>
 
 
-                                {/* PROJECT INFO */}
+                                {/* =================================================
+                                    PROJECT INFO
+                                ================================================== */}
 
                                 <div
                                     className="
-                                        mt-4
+                                        mt-3
+
                                         border-b
                                         border-black
+
                                         pb-4
+
+                                        sm:mt-4
                                     "
                                 >
 
                                     <div
                                         className="
                                             flex
+                                            min-w-0
                                             items-start
                                             justify-between
+                                            gap-3
                                         "
                                     >
 
-                                        <div>
+                                        <div
+                                            className="
+                                                min-w-0
+                                            "
+                                        >
 
                                             <p
                                                 className="
-                                                    text-[7px]
+                                                    break-words
+
+                                                    text-[6px]
                                                     font-medium
                                                     uppercase
-                                                    tracking-[0.25em]
+                                                    tracking-[0.2em]
                                                     text-black/40
+
+                                                    sm:text-[7px]
+                                                    sm:tracking-[0.25em]
                                                 "
                                             >
                                                 {project.category}
                                             </p>
 
+
                                             <h3
                                                 className="
                                                     mt-1.5
-                                                    text-base
+
+                                                    break-words
+
+                                                    text-sm
                                                     font-bold
                                                     uppercase
                                                     tracking-[-0.02em]
+
+                                                    sm:text-base
+
                                                     md:text-lg
                                                 "
                                             >
@@ -685,8 +868,13 @@ const SkillsProjects = () => {
 
                                         <span
                                             className="
-                                                text-[8px]
+                                                shrink-0
+                                                pt-0.5
+
+                                                text-[7px]
                                                 text-black/30
+
+                                                sm:text-[8px]
                                             "
                                         >
                                             {project.year}
@@ -718,24 +906,37 @@ const SkillsProjects = () => {
                         initial={{
                             opacity: 0,
                         }}
+
                         animate={{
                             opacity: 1,
                         }}
+
                         exit={{
                             opacity: 0,
                         }}
+
+                        transition={{
+                            duration: 0.25,
+                        }}
+
                         className="
                             fixed
                             inset-0
                             z-[100]
+
                             flex
                             items-center
                             justify-center
+
                             bg-black/60
-                            p-4
+
+                            p-3
+
                             backdrop-blur-sm
+
                             sm:p-6
                         "
+
                         onClick={() =>
                             setSelectedProject(null)
                         }
@@ -747,94 +948,136 @@ const SkillsProjects = () => {
                                 y: 40,
                                 scale: 0.98,
                             }}
+
                             animate={{
                                 opacity: 1,
                                 y: 0,
                                 scale: 1,
                             }}
+
                             exit={{
                                 opacity: 0,
                                 y: 30,
                                 scale: 0.98,
                             }}
+
                             transition={{
                                 duration: 0.4,
                             }}
+
                             onClick={(e) =>
                                 e.stopPropagation()
                             }
+
                             className="
                                 relative
-                                max-h-[90vh]
+
+                                max-h-[92vh]
                                 w-full
                                 max-w-[900px]
+
+                                overflow-x-hidden
                                 overflow-y-auto
+
                                 bg-[#f8f8f6]
-                                p-5
+
+                                p-4
+
+                                sm:max-h-[90vh]
                                 sm:p-8
+
                                 md:p-10
                             "
                         >
 
-                            {/* CLOSE */}
+                            {/* =================================================
+                                CLOSE BUTTON
+                            ================================================== */}
 
                             <button
+                                type="button"
+
+                                aria-label="Close project"
+
                                 onClick={() =>
-                                    setSelectedProject(
-                                        null
-                                    )
+                                    setSelectedProject(null)
                                 }
+
                                 className="
                                     absolute
-                                    right-4
-                                    top-4
+                                    right-3
+                                    top-3
+                                    z-20
+
                                     flex
                                     h-8
                                     w-8
+
                                     items-center
                                     justify-center
+
                                     rounded-full
+
                                     border
                                     border-black
+
                                     text-base
+
                                     transition-all
                                     duration-300
+
                                     hover:bg-black
                                     hover:text-white
+
+                                    sm:right-4
+                                    sm:top-4
                                 "
                             >
                                 ×
                             </button>
 
 
-                            {/* TOP INFO */}
+                            {/* =================================================
+                                TOP INFO
+                            ================================================== */}
 
                             <div
                                 className="
                                     flex
                                     items-center
                                     justify-between
+                                    gap-4
+                                    pr-10
                                 "
                             >
 
                                 <p
                                     className="
-                                        text-[8px]
+                                        text-[7px]
                                         uppercase
-                                        tracking-[0.35em]
+                                        tracking-[0.3em]
                                         text-black/40
+
+                                        sm:text-[8px]
+                                        sm:tracking-[0.35em]
                                     "
                                 >
                                     Project{" "}
                                     {selectedProject.number}
                                 </p>
 
+
                                 <p
                                     className="
-                                        text-[8px]
+                                        shrink-0
+
+                                        text-[7px]
                                         uppercase
-                                        tracking-[0.25em]
+                                        tracking-[0.2em]
                                         text-black/40
+
+                                        sm:text-[8px]
+                                        sm:tracking-[0.25em]
                                     "
                                 >
                                     {selectedProject.year}
@@ -843,39 +1086,52 @@ const SkillsProjects = () => {
                             </div>
 
 
-                            {/* TITLE */}
+                            {/* =================================================
+                                TITLE
+                            ================================================== */}
 
                             <h2
                                 className="
-                                    mt-6
-                                    pr-10
+                                    mt-5
+                                    max-w-full
+                                    break-words
+                                    pr-8
+
                                     font-black
                                     uppercase
                                     leading-[0.85]
                                     tracking-[-0.06em]
+
+                                    text-[clamp(2.5rem,12vw,5.5rem)]
+
+                                    sm:mt-6
+                                    sm:text-[clamp(2.8rem,7vw,5.5rem)]
                                 "
                                 style={{
                                     fontFamily:
                                         "Arial Narrow, Impact, sans-serif",
-
-                                    fontSize:
-                                        "clamp(2.8rem, 6vw, 5.5rem)",
                                 }}
                             >
                                 {selectedProject.title}
+
                                 <span className="text-black/20">
                                     .
                                 </span>
                             </h2>
 
 
-                            {/* IMAGE */}
+                            {/* =================================================
+                                IMAGE
+                            ================================================== */}
 
                             <div
                                 className="
-                                    mt-7
+                                    mt-6
+                                    w-full
                                     overflow-hidden
                                     bg-[#e9e9e6]
+
+                                    sm:mt-7
                                 "
                             >
 
@@ -886,49 +1142,77 @@ const SkillsProjects = () => {
                                     alt={
                                         selectedProject.title
                                     }
+
                                     className="
                                         block
+                                        h-auto
+                                        max-h-[45vh]
                                         w-full
                                         object-cover
+
+                                        sm:max-h-none
                                     "
                                 />
 
                             </div>
 
 
-                            {/* DETAILS */}
+                            {/* =================================================
+                                DETAILS
+                            ================================================== */}
 
                             <div
                                 className="
-                                    mt-8
+                                    mt-7
+
                                     grid
-                                    gap-8
+                                    grid-cols-1
+                                    gap-7
+
+                                    sm:mt-8
+                                    sm:gap-8
+
                                     md:grid-cols-2
                                 "
                             >
 
                                 {/* DESCRIPTION */}
 
-                                <div>
+                                <div
+                                    className="
+                                        min-w-0
+                                    "
+                                >
 
                                     <p
                                         className="
-                                            text-[8px]
+                                            text-[7px]
                                             font-bold
                                             uppercase
-                                            tracking-[0.3em]
+                                            tracking-[0.25em]
+
+                                            sm:text-[8px]
+                                            sm:tracking-[0.3em]
                                         "
                                     >
                                         About
                                     </p>
 
+
                                     <p
                                         className="
-                                            mt-3
+                                            mt-2.5
+
                                             max-w-[500px]
-                                            text-xs
-                                            leading-6
+
+                                            text-[11px]
+                                            leading-5
+
                                             text-black/55
+
+                                            sm:mt-3
+                                            sm:text-xs
+                                            sm:leading-6
                                         "
                                     >
                                         {
@@ -941,25 +1225,35 @@ const SkillsProjects = () => {
 
                                 {/* TECHNOLOGIES */}
 
-                                <div>
+                                <div
+                                    className="
+                                        min-w-0
+                                    "
+                                >
 
                                     <p
                                         className="
-                                            text-[8px]
+                                            text-[7px]
                                             font-bold
                                             uppercase
-                                            tracking-[0.3em]
+                                            tracking-[0.25em]
+
+                                            sm:text-[8px]
+                                            sm:tracking-[0.3em]
                                         "
                                     >
                                         Built with
                                     </p>
+
 
                                     <div
                                         className="
                                             mt-3
                                             flex
                                             flex-wrap
-                                            gap-2
+                                            gap-1.5
+
+                                            sm:gap-2
                                         "
                                     >
 
@@ -973,15 +1267,27 @@ const SkillsProjects = () => {
                                                         key={
                                                             technology
                                                         }
+
                                                         className="
+                                                            max-w-full
+
+                                                            break-words
+
                                                             rounded-full
+
                                                             border
                                                             border-black/15
-                                                            px-3
+
+                                                            px-2.5
                                                             py-1.5
-                                                            text-[7px]
+
+                                                            text-[6px]
                                                             uppercase
-                                                            tracking-[0.12em]
+                                                            tracking-[0.1em]
+
+                                                            sm:px-3
+                                                            sm:text-[7px]
+                                                            sm:tracking-[0.12em]
                                                         "
                                                     >
                                                         {
@@ -1006,27 +1312,6 @@ const SkillsProjects = () => {
                 )}
 
             </AnimatePresence>
-
-
-            {/* =====================================================
-                MARQUEE ANIMATION
-            ====================================================== */}
-
-            <style>{`
-
-                @keyframes skillsMarquee {
-
-                    from {
-                        transform: translateX(0);
-                    }
-
-                    to {
-                        transform: translateX(-50%);
-                    }
-
-                }
-
-            `}</style>
 
         </main>
     );

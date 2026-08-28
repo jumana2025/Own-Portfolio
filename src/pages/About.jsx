@@ -9,58 +9,74 @@ const About = () => {
             className="
                 relative
                 z-20
-                -mt-6
+                w-full
                 overflow-hidden
-
                 bg-[#F4EBDD]
                 text-[#241814]
             "
         >
-            <div className="px-6 py-20 md:px-12 md:py-28 lg:px-16">
+            <div
+                className="
+                    mx-auto
+                    w-full
+                    max-w-[1600px]
+                    px-5
+                    py-16
 
-                {/* ================= HEADER ================= */}
+                    sm:px-8
+                    sm:py-20
+
+                    md:px-12
+                    md:py-24
+
+                    lg:px-16
+                    lg:py-28
+                "
+            >
+
+                {/* HEADER */}
 
                 <motion.div
-                    initial={{
-                        opacity: 0,
-                        y: 40,
-                    }}
-                    whileInView={{
-                        opacity: 1,
-                        y: 0,
-                    }}
-                    viewport={{
-                        once: true,
-                        amount: 0.2,
-                    }}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
                     transition={{
                         duration: 0.8,
                         ease: [0.16, 1, 0.3, 1],
                     }}
                     className="
                         flex
+                        w-full
                         items-center
                         justify-between
+                        gap-4
                     "
                 >
-                    <div className="flex items-center gap-3">
+                    <div className="flex min-w-0 items-center gap-2 sm:gap-3">
 
                         <span
                             className="
-                                h-2
-                                w-2
+                                h-1.5
+                                w-1.5
+                                shrink-0
                                 rounded-full
                                 bg-[#7A263A]
+
+                                sm:h-2
+                                sm:w-2
                             "
                         />
 
                         <p
                             className="
-                                text-[10px]
+                                whitespace-nowrap
+                                text-[8px]
                                 font-medium
                                 uppercase
-                                tracking-[0.3em]
-                                text-[#241814]
+                                tracking-[0.2em]
+
+                                sm:text-[10px]
+                                sm:tracking-[0.3em]
                             "
                         >
                             About Me
@@ -70,42 +86,50 @@ const About = () => {
 
                     <p
                         className="
-                            text-[10px]
+                            shrink-0
+                            whitespace-nowrap
+                            text-[8px]
                             uppercase
-                            tracking-[0.3em]
+                            tracking-[0.18em]
                             text-[#241814]/40
+
+                            sm:text-[10px]
+                            sm:tracking-[0.3em]
                         "
                     >
                         01 / 04
                     </p>
-
                 </motion.div>
 
 
-                {/* ================= CONTENT ================= */}
+                {/* CONTENT */}
 
                 <div
                     className="
-                        mt-16
+                        mt-12
+
                         grid
                         grid-cols-1
-                        gap-12
+                        gap-10
 
-                        md:mt-24
+                        sm:mt-16
+                        sm:gap-12
+
+                        md:mt-20
                         md:grid-cols-12
                         md:items-center
+
+                        lg:mt-24
                     "
                 >
 
-                    {/* =================================================
-                        IMAGE
-                    ================================================= */}
+                    {/* IMAGE */}
 
                     <motion.div
                         initial={{
                             opacity: 0,
-                            y: 100,
-                            scale: 0.96,
+                            y: 70,
+                            scale: 0.97,
                         }}
                         whileInView={{
                             opacity: 1,
@@ -123,19 +147,24 @@ const About = () => {
                         className="
                             group
                             relative
+                            mx-auto
+                            w-full
+                            max-w-[340px]
                             overflow-hidden
 
-                            bg-[#241814]/10
+                            md:col-span-5
+                            md:mx-0
+                            md:max-w-none
 
-                            md:col-span-4
+                            lg:col-span-4
                         "
                     >
-
-                        <div className="aspect-[4/5]">
+                        <div className="aspect-[4/5] w-full">
 
                             <img
                                 src="/hero.jpeg"
                                 alt="Full Stack Developer"
+                                loading="lazy"
                                 className="
                                     h-full
                                     w-full
@@ -150,16 +179,12 @@ const About = () => {
 
                         </div>
 
-
-                        {/* IMAGE OVERLAY */}
-
                         <div
                             className="
+                                pointer-events-none
                                 absolute
                                 inset-0
-
                                 bg-[#7A263A]/0
-
                                 transition-all
                                 duration-500
 
@@ -167,37 +192,35 @@ const About = () => {
                             "
                         />
 
-
-                        {/* IMAGE LABEL */}
-
                         <div
                             className="
                                 absolute
-                                bottom-5
-                                left-5
+                                bottom-3
+                                left-3
+
+                                sm:bottom-5
+                                sm:left-5
                             "
                         >
                             <p
                                 className="
-                                    text-[9px]
+                                    text-[7px]
                                     uppercase
-                                    tracking-[0.3em]
-
+                                    tracking-[0.2em]
                                     text-[#F4EBDD]
-
                                     mix-blend-difference
+
+                                    sm:text-[9px]
+                                    sm:tracking-[0.3em]
                                 "
                             >
                                 Full Stack Developer
                             </p>
                         </div>
-
                     </motion.div>
 
 
-                    {/* =================================================
-                        DESCRIPTION
-                    ================================================= */}
+                    {/* TEXT */}
 
                     <motion.div
                         initial="hidden"
@@ -215,20 +238,22 @@ const About = () => {
                             },
                         }}
                         className="
+                            w-full
+                            min-w-0
+
                             md:col-span-6
-                            md:col-start-6
+                            md:col-start-7
+
+                            lg:col-span-6
+                            lg:col-start-6
                         "
                     >
-
-                        {/* =================================================
-                            MAIN DESCRIPTION
-                        ================================================= */}
 
                         <motion.h2
                             variants={{
                                 hidden: {
                                     opacity: 0,
-                                    y: 50,
+                                    y: 40,
                                 },
                                 visible: {
                                     opacity: 1,
@@ -240,16 +265,18 @@ const About = () => {
                                 },
                             }}
                             className="
+                                w-full
                                 max-w-2xl
 
-                                text-2xl
+                                text-[1.55rem]
                                 font-medium
-                                leading-[1.05]
-                                tracking-[-0.03em]
+                                leading-[1.1]
+                                tracking-[-0.035em]
 
-                                text-[#241814]
+                                sm:text-3xl
 
                                 md:text-4xl
+
                                 lg:text-5xl
                             "
                         >
@@ -257,19 +284,16 @@ const About = () => {
                             <span className="italic text-[#7A263A]">
                                 Full Stack Developer
                             </span>{" "}
-                            who loves turning ideas into modern digital experiences.
+                            who loves turning ideas into modern digital
+                            experiences.
                         </motion.h2>
 
 
-                        {/* =================================================
-                            PARAGRAPH 1
-                        ================================================= */}
-
                         <motion.p
                             variants={{
                                 hidden: {
                                     opacity: 0,
-                                    y: 40,
+                                    y: 30,
                                 },
                                 visible: {
                                     opacity: 1,
@@ -280,32 +304,31 @@ const About = () => {
                                 },
                             }}
                             className="
-                                mt-8
+                                mt-6
                                 max-w-xl
 
-                                text-sm
-                                leading-7
-
+                                text-[12px]
+                                leading-6
                                 text-[#241814]/65
+
+                                sm:mt-8
+                                sm:text-sm
+                                sm:leading-7
 
                                 md:text-base
                             "
                         >
-                            I enjoy creating clean, responsive and functional web
-                            applications. I work across both frontend and backend to turn
-                            ideas into complete digital products.
+                            I enjoy creating clean, responsive and functional
+                            web applications. I work across both frontend and
+                            backend to turn ideas into complete digital products.
                         </motion.p>
 
-
-                        {/* =================================================
-                            PARAGRAPH 2
-                        ================================================= */}
 
                         <motion.p
                             variants={{
                                 hidden: {
                                     opacity: 0,
-                                    y: 40,
+                                    y: 30,
                                 },
                                 visible: {
                                     opacity: 1,
@@ -316,71 +339,69 @@ const About = () => {
                                 },
                             }}
                             className="
-                                mt-4
+                                mt-3
                                 max-w-xl
 
-                                text-sm
-                                leading-7
-
+                                text-[12px]
+                                leading-6
                                 text-[#241814]/65
+
+                                sm:text-sm
+                                sm:leading-7
 
                                 md:text-base
                             "
                         >
-                            I focus on writing clean code, creating simple user experiences
-                            and continuously learning new technologies.
+                            I focus on writing clean code, creating simple user
+                            experiences and continuously learning new technologies.
                         </motion.p>
 
 
-                        {/* =================================================
-                            BUTTONS
-                        ================================================= */}
+                        {/* BUTTONS */}
 
                         <motion.div
                             variants={{
                                 hidden: {
                                     opacity: 0,
-                                    y: 40,
+                                    y: 30,
                                 },
                                 visible: {
                                     opacity: 1,
                                     y: 0,
-                                    transition: {
-                                        duration: 0.7,
-                                    },
                                 },
                             }}
                             className="
-                                mt-10
+                                mt-8
                                 flex
-                                flex-wrap
+                                w-full
+                                flex-col
                                 gap-3
+
+                                sm:flex-row
+                                sm:flex-wrap
                             "
                         >
-
-                            {/* =================================================
-                                RESUME
-                            ================================================= */}
 
                             <a
                                 href="/jumanap.in.pdf"
                                 download
                                 className="
                                     group
-
                                     inline-flex
+                                    w-full
                                     items-center
-                                    gap-3
+                                    justify-center
+                                    gap-2
 
                                     bg-[#7A263A]
 
-                                    px-6
-                                    py-4
+                                    px-5
+                                    py-3.5
 
-                                    text-[10px]
+                                    text-[8px]
                                     font-semibold
                                     uppercase
-                                    tracking-[0.2em]
+                                    tracking-[0.14em]
 
                                     text-[#F4EBDD]
 
@@ -388,65 +409,66 @@ const About = () => {
                                     duration-300
 
                                     hover:-translate-y-1
-
                                     hover:bg-[#241814]
+
+                                    sm:w-auto
+                                    sm:px-6
+                                    sm:py-4
+                                    sm:text-[10px]
                                 "
                             >
                                 Download Resume
 
                                 <ArrowDownToLine
-                                    size={15}
+                                    size={14}
                                     className="
                                         transition-transform
                                         duration-300
-
                                         group-hover:translate-y-1
                                     "
                                 />
-
                             </a>
 
-
-                            {/* =================================================
-                                CONTACT
-                            ================================================= */}
 
                             <a
                                 href="#contact"
                                 className="
                                     group
-
                                     inline-flex
+                                    w-full
                                     items-center
-                                    gap-3
+                                    justify-center
+                                    gap-2
 
                                     border
                                     border-[#241814]
 
-                                    px-6
-                                    py-4
+                                    px-5
+                                    py-3.5
 
-                                    text-[10px]
+                                    text-[8px]
                                     font-semibold
                                     uppercase
-                                    tracking-[0.2em]
-
-                                    text-[#241814]
+                                    tracking-[0.14em]
 
                                     transition-all
                                     duration-300
 
                                     hover:-translate-y-1
-
                                     hover:border-[#7A263A]
                                     hover:bg-[#7A263A]
                                     hover:text-[#F4EBDD]
+
+                                    sm:w-auto
+                                    sm:px-6
+                                    sm:py-4
+                                    sm:text-[10px]
                                 "
                             >
                                 Let's Talk
 
                                 <ArrowUpRight
-                                    size={15}
+                                    size={14}
                                     className="
                                         transition-transform
                                         duration-300
@@ -455,7 +477,6 @@ const About = () => {
                                         group-hover:-translate-y-1
                                     "
                                 />
-
                             </a>
 
                         </motion.div>
@@ -465,7 +486,7 @@ const About = () => {
                 </div>
 
 
-                {/* ================= BOTTOM LINE ================= */}
+                {/* BOTTOM LINE */}
 
                 <motion.div
                     initial={{
@@ -476,13 +497,21 @@ const About = () => {
                         opacity: 1,
                         scaleX: 1,
                     }}
-                    viewport={{
-                        once: true,
-                    }}
+                    viewport={{ once: true }}
                     transition={{
                         duration: 1,
                         delay: 0.3,
                     }}
+                    className="
+                        mt-16
+                        h-px
+                        w-full
+                        origin-left
+                        bg-[#241814]/10
+
+                        sm:mt-20
+                        md:mt-28
+                    "
                 />
 
             </div>
