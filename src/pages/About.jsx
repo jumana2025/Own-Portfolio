@@ -1,522 +1,65 @@
 import React from "react";
-import { motion } from "framer-motion";
-import { ArrowDownToLine, ArrowUpRight } from "lucide-react";
 
-const About = () => {
+const skills = [
+    "Python", "JavaScript", "React", "Node.js",
+    "Web Design", "Django", "PostgreSQL", "HTML", "CSS", "Tailwind CSS", "REST APIs", "Git",
+    "celery", "Docker", "AWS", "Render", "Vercel", "RAG", "OpenAI API", "AI/ML",
+];
+
+const software = [
+    "VS Code", "Git", "Postman", "Figma",
+    "Docker", "PostgreSQL", "Vercel", "AWS",
+];
+
+export default function About() {
     return (
-        <section
-            id="about"
-            className="
-                relative
-                z-20
-                w-full
-                overflow-hidden
-                bg-[#F4EBDD]
-                text-[#241814]
-            "
-        >
-            <div
-                className="
-                    mx-auto
-                    w-full
-                    max-w-[1600px]
-                    px-5
-                    py-16
-
-                    sm:px-8
-                    sm:py-20
-
-                    md:px-12
-                    md:py-24
-
-                    lg:px-16
-                    lg:py-28
-                "
-            >
-
-                {/* HEADER */}
-
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.2 }}
-                    transition={{
-                        duration: 0.8,
-                        ease: [0.16, 1, 0.3, 1],
-                    }}
-                    className="
-                        flex
-                        w-full
-                        items-center
-                        justify-between
-                        gap-4
-                    "
-                >
-                    <div className="flex min-w-0 items-center gap-2 sm:gap-3">
-
-                        <span
-                            className="
-                                h-1.5
-                                w-1.5
-                                shrink-0
-                                rounded-full
-                                bg-[#7A263A]
-
-                                sm:h-2
-                                sm:w-2
-                            "
-                        />
-
-                        <p
-                            className="
-                                whitespace-nowrap
-                                text-[8px]
-                                font-medium
-                                uppercase
-                                tracking-[0.2em]
-
-                                sm:text-[10px]
-                                sm:tracking-[0.3em]
-                            "
-                        >
-                            About Me
-                        </p>
-
+        <section id="about" className="bg-black px-6 py-24 text-white sm:px-10 lg:px-20">
+            <div className="mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[minmax(320px,426px)_1fr] lg:gap-14 xl:gap-20">
+                <div className="lg:col-start-2">
+                    <div className="mb-8 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.35em] text-blue-300">
+                        <span className="h-px w-8 bg-blue-500" /> About
                     </div>
 
-                    <p
-                        className="
-                            shrink-0
-                            whitespace-nowrap
-                            text-[8px]
-                            uppercase
-                            tracking-[0.18em]
-                            text-[#241814]/40
+                    <h2 className="max-w-4xl font-['Syne'] text-5xl font-bold leading-[0.95] tracking-[-0.06em] sm:text-6xl lg:text-7xl">
+                        Visual identity,
+                        <br />
+                        built with <span className="text-blue-500">intention.</span>
+                    </h2>
 
-                            sm:text-[10px]
-                            sm:tracking-[0.3em]
-                        "
-                    >
-                        01 / 04
-                    </p>
-                </motion.div>
+                    <div className="mt-8 max-w-2xl space-y-2 text-sm leading-7 text-slate-300 sm:text-base">
+                        <p>I&apos;m a software developer dedicated to building impactful digital experiences through code, design, and thoughtful problem-solving.</p>
+                        <p>Focused on helping people and businesses turn ideas into clean, responsive, and useful web products.</p>
+                    </div>
 
-
-                {/* CONTENT */}
-
-                <div
-                    className="
-                        mt-12
-
-                        grid
-                        grid-cols-1
-                        gap-10
-
-                        sm:mt-16
-                        sm:gap-12
-
-                        md:mt-20
-                        md:grid-cols-12
-                        md:items-center
-
-                        lg:mt-24
-                    "
-                >
-
-                    {/* IMAGE */}
-
-                    <motion.div
-                        initial={{
-                            opacity: 0,
-                            y: 70,
-                            scale: 0.97,
-                        }}
-                        whileInView={{
-                            opacity: 1,
-                            y: 0,
-                            scale: 1,
-                        }}
-                        viewport={{
-                            once: true,
-                            amount: 0.2,
-                        }}
-                        transition={{
-                            duration: 1,
-                            ease: [0.16, 1, 0.3, 1],
-                        }}
-                        className="
-                            group
-                            relative
-                            mx-auto
-                            w-full
-                            max-w-[340px]
-                            overflow-hidden
-
-                            md:col-span-5
-                            md:mx-0
-                            md:max-w-none
-
-                            lg:col-span-4
-                        "
-                    >
-                        <div className="aspect-[4/5] w-full">
-
-                            <img
-                                src="/hero.jpeg"
-                                alt="Full Stack Developer"
-                                loading="lazy"
-                                className="
-                                    h-full
-                                    w-full
-                                    object-cover
-
-                                    transition-transform
-                                    duration-1000
-
-                                    group-hover:scale-105
-                                "
-                            />
-
+                    <div className="mt-12">
+                        <p className="mb-5 font-mono text-[10px] uppercase tracking-[0.35em] text-blue-300">Skills</p>
+                        <div className="flex flex-wrap gap-2">
+                            {skills.map((skill) => <span key={skill} className="rounded-full border border-white/15 px-3 py-2 text-xs text-slate-300 transition-colors hover:border-blue-500 hover:text-blue-300">{skill}</span>)}
                         </div>
+                    </div>
 
-                        <div
-                            className="
-                                pointer-events-none
-                                absolute
-                                inset-0
-                                bg-[#7A263A]/0
-                                transition-all
-                                duration-500
-
-                                group-hover:bg-[#7A263A]/10
-                            "
-                        />
-
-                        <div
-                            className="
-                                absolute
-                                bottom-3
-                                left-3
-
-                                sm:bottom-5
-                                sm:left-5
-                            "
-                        >
-                            <p
-                                className="
-                                    text-[7px]
-                                    uppercase
-                                    tracking-[0.2em]
-                                    text-[#F4EBDD]
-                                    mix-blend-difference
-
-                                    sm:text-[9px]
-                                    sm:tracking-[0.3em]
-                                "
-                            >
-                                Full Stack Developer
-                            </p>
+                    <div className="mt-12">
+                        <p className="mb-5 font-mono text-[10px] uppercase tracking-[0.35em] text-blue-300">Software</p>
+                        <div className="grid grid-cols-2 gap-x-8 gap-y-3 text-sm text-slate-300 sm:grid-cols-4">
+                            {software.map((item) => <span key={item} className="before:mr-2 before:text-blue-500 before:content-['•']">{item}</span>)}
                         </div>
-                    </motion.div>
-
-
-                    {/* TEXT */}
-
-                    <motion.div
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{
-                            once: true,
-                            amount: 0.2,
-                        }}
-                        variants={{
-                            hidden: {},
-                            visible: {
-                                transition: {
-                                    staggerChildren: 0.15,
-                                },
-                            },
-                        }}
-                        className="
-                            w-full
-                            min-w-0
-
-                            md:col-span-6
-                            md:col-start-7
-
-                            lg:col-span-6
-                            lg:col-start-6
-                        "
-                    >
-
-                        <motion.h2
-                            variants={{
-                                hidden: {
-                                    opacity: 0,
-                                    y: 40,
-                                },
-                                visible: {
-                                    opacity: 1,
-                                    y: 0,
-                                    transition: {
-                                        duration: 0.8,
-                                        ease: [0.16, 1, 0.3, 1],
-                                    },
-                                },
-                            }}
-                            className="
-                                w-full
-                                max-w-2xl
-
-                                text-[1.55rem]
-                                font-medium
-                                leading-[1.1]
-                                tracking-[-0.035em]
-
-                                sm:text-3xl
-
-                                md:text-4xl
-
-                                lg:text-5xl
-                            "
-                        >
-                            I'm a{" "}
-                            <span className="italic text-[#7A263A]">
-                                Full Stack Developer
-                            </span>{" "}
-                            who loves turning ideas into modern digital
-                            experiences.
-                        </motion.h2>
-
-
-                        <motion.p
-                            variants={{
-                                hidden: {
-                                    opacity: 0,
-                                    y: 30,
-                                },
-                                visible: {
-                                    opacity: 1,
-                                    y: 0,
-                                    transition: {
-                                        duration: 0.7,
-                                    },
-                                },
-                            }}
-                            className="
-                                mt-6
-                                max-w-xl
-
-                                text-[12px]
-                                leading-6
-                                text-[#241814]/65
-
-                                sm:mt-8
-                                sm:text-sm
-                                sm:leading-7
-
-                                md:text-base
-                            "
-                        >
-                            I enjoy creating clean, responsive and functional
-                            web applications. I work across both frontend and
-                            backend to turn ideas into complete digital products.
-                        </motion.p>
-
-
-                        <motion.p
-                            variants={{
-                                hidden: {
-                                    opacity: 0,
-                                    y: 30,
-                                },
-                                visible: {
-                                    opacity: 1,
-                                    y: 0,
-                                    transition: {
-                                        duration: 0.7,
-                                    },
-                                },
-                            }}
-                            className="
-                                mt-3
-                                max-w-xl
-
-                                text-[12px]
-                                leading-6
-                                text-[#241814]/65
-
-                                sm:text-sm
-                                sm:leading-7
-
-                                md:text-base
-                            "
-                        >
-                            I focus on writing clean code, creating simple user
-                            experiences and continuously learning new technologies.
-                        </motion.p>
-
-
-                        {/* BUTTONS */}
-
-                        <motion.div
-                            variants={{
-                                hidden: {
-                                    opacity: 0,
-                                    y: 30,
-                                },
-                                visible: {
-                                    opacity: 1,
-                                    y: 0,
-                                },
-                            }}
-                            className="
-                                mt-8
-                                flex
-                                w-full
-                                flex-col
-                                gap-3
-
-                                sm:flex-row
-                                sm:flex-wrap
-                            "
-                        >
-
-                            <a
-                                href="/jumanap.in.pdf"
-                                download
-                                className="
-                                    group
-                                    inline-flex
-                                    w-full
-                                    items-center
-                                    justify-center
-                                    gap-2
-
-                                    bg-[#7A263A]
-
-                                    px-5
-                                    py-3.5
-
-                                    text-[8px]
-                                    font-semibold
-                                    uppercase
-                                    tracking-[0.14em]
-
-                                    text-[#F4EBDD]
-
-                                    transition-all
-                                    duration-300
-
-                                    hover:-translate-y-1
-                                    hover:bg-[#241814]
-
-                                    sm:w-auto
-                                    sm:px-6
-                                    sm:py-4
-                                    sm:text-[10px]
-                                "
-                            >
-                                Download Resume
-
-                                <ArrowDownToLine
-                                    size={14}
-                                    className="
-                                        transition-transform
-                                        duration-300
-                                        group-hover:translate-y-1
-                                    "
-                                />
-                            </a>
-
-
-                            <a
-                                href="#contact"
-                                className="
-                                    group
-                                    inline-flex
-                                    w-full
-                                    items-center
-                                    justify-center
-                                    gap-2
-
-                                    border
-                                    border-[#241814]
-
-                                    px-5
-                                    py-3.5
-
-                                    text-[8px]
-                                    font-semibold
-                                    uppercase
-                                    tracking-[0.14em]
-
-                                    transition-all
-                                    duration-300
-
-                                    hover:-translate-y-1
-                                    hover:border-[#7A263A]
-                                    hover:bg-[#7A263A]
-                                    hover:text-[#F4EBDD]
-
-                                    sm:w-auto
-                                    sm:px-6
-                                    sm:py-4
-                                    sm:text-[10px]
-                                "
-                            >
-                                Let's Talk
-
-                                <ArrowUpRight
-                                    size={14}
-                                    className="
-                                        transition-transform
-                                        duration-300
-
-                                        group-hover:translate-x-1
-                                        group-hover:-translate-y-1
-                                    "
-                                />
-                            </a>
-
-                        </motion.div>
-
-                    </motion.div>
+                    </div>
 
                 </div>
 
-
-                {/* BOTTOM LINE */}
-
-                <motion.div
-                    initial={{
-                        opacity: 0,
-                        scaleX: 0,
-                    }}
-                    whileInView={{
-                        opacity: 1,
-                        scaleX: 1,
-                    }}
-                    viewport={{ once: true }}
-                    transition={{
-                        duration: 1,
-                        delay: 0.3,
-                    }}
-                    className="
-                        mt-16
-                        h-px
-                        w-full
-                        origin-left
-                        bg-[#241814]/10
-
-                        sm:mt-20
-                        md:mt-28
-                    "
-                />
-
+                <div className="relative mx-auto w-full max-w-[426px] lg:col-start-1 lg:row-start-1 lg:order-first">
+                    <div className="absolute -inset-3 rounded-sm border border-blue-500/20" />
+                    <div className="relative overflow-hidden rounded-sm bg-slate-900">
+                        <img src="/Proffessionalimage.png" alt="Professional image of Jumana, software developer" className="aspect-[4/5] w-full object-cover grayscale transition duration-700 hover:scale-105 hover:grayscale-0" />
+                        <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/90 to-transparent" />
+                    </div>
+                    <div className="absolute -bottom-5 right-0 border border-white/10 bg-[#111214] px-5 py-4 shadow-2xl sm:right-[-18px]">
+                        <p className="text-2xl font-bold text-white">Full Stack</p>
+                        <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.18em] text-slate-400">Developer</p>
+                    </div>
+                </div>
             </div>
+
         </section>
     );
-};
-
-export default About;
+}

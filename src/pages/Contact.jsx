@@ -17,9 +17,26 @@ export const Contact = () => {
         try {
             const formData = new FormData(e.target);
 
+            const accessKey =
+                import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+
+            if (!accessKey) {
+                setError(
+                    "Access key is missing. Please check the environment variable."
+                );
+                return;
+            }
+
+            formData.append("access_key", accessKey);
+
             formData.append(
-                "access_key",
-                import.meta.env.VITE_WEB3FORMS_ACCESS_KEY
+                "subject",
+                "New Portfolio Contact Form Submission"
+            );
+
+            formData.append(
+                "from_name",
+                "Portfolio Website"
             );
 
             const response = await fetch(
@@ -32,14 +49,18 @@ export const Contact = () => {
 
             const result = await response.json();
 
+            console.log("Web3Forms Response:", result);
+
             if (result.success) {
                 setSent(true);
                 e.target.reset();
             } else {
                 setError(
+                    result.message ||
                     "Your message could not be sent. Please try again."
                 );
             }
+
         } catch (err) {
             console.error("Web3Forms Error:", err);
 
@@ -52,40 +73,12 @@ export const Contact = () => {
     };
 
     return (
-        <main
+        <section
             id="contact"
-            className="
-                relative
-                min-h-screen
-                w-full
-                overflow-hidden
-
-                bg-[#F4EBDD]
-                text-[#241814]
-            "
+            className="contact-section relative min-h-screen w-full overflow-hidden bg-[#F4EBDD] text-[#241814]"
         >
             <section
-                className="
-                    relative
-                    mx-auto
-
-                    flex
-                    min-h-screen
-                    w-full
-                    max-w-[1400px]
-                    items-center
-
-                    px-5
-                    py-20
-
-                    sm:px-8
-                    sm:py-24
-
-                    md:px-12
-                    md:py-28
-
-                    lg:px-16
-                "
+                className="contact-container relative mx-auto flex min-h-screen w-full max-w-[1400px] items-center px-5 py-20 sm:px-8 sm:py-24 md:px-12 md:py-28 lg:px-16"
             >
                 {/* DECORATION */}
 
@@ -93,24 +86,16 @@ export const Contact = () => {
                     className="
                         pointer-events-none
                         absolute
-
                         right-[-180px]
                         top-1/2
-
                         h-[300px]
                         w-[300px]
-
                         -translate-y-1/2
-
                         rounded-full
-
                         bg-[#7A263A]/[0.035]
-
                         blur-3xl
-
                         sm:h-[450px]
                         sm:w-[450px]
-
                         md:h-[500px]
                         md:w-[500px]
                     "
@@ -131,34 +116,26 @@ export const Contact = () => {
                         }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.7 }}
-                        className="
-                            mb-8
-
-                            text-[8px]
-                            font-medium
-                            uppercase
-                            tracking-[0.25em]
-
-                            text-[#7A263A]
-
-                            sm:mb-10
-                        "
+                        className="contact-kicker mb-8 text-[8px] font-medium uppercase tracking-[0.25em] text-[#7A263A] sm:mb-10"
                     >
-                        Get in touch
+                        <span /> Get in touch
+                    </motion.div>
+
+                    <motion.div
+                        className="contact-heading"
+                        initial={{ opacity: 0, y: 22 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.7 }}
+                    >
+                        <h2>Let’s build something <span>great.</span></h2>
+                        <p>Share a little about what you’re working on. I’ll read every message and get back to you as soon as I can.</p>
                     </motion.div>
 
                     {/* CONTENT */}
 
                     <div
-                        className="
-                            grid
-                            gap-12
-
-                            sm:gap-16
-
-                            lg:grid-cols-[0.9fr_1.1fr]
-                            lg:gap-24
-                        "
+                        className="contact-layout grid gap-12 sm:gap-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12"
                     >
 
                         {/* LEFT */}
@@ -176,120 +153,25 @@ export const Contact = () => {
                             transition={{
                                 duration: 0.8,
                             }}
-                            className="w-full"
+                            className="contact-details w-full"
                         >
-
-                            <p
-                                className="
-                                    max-w-md
-
-                                    text-[12px]
-                                    leading-6
-
-                                    text-[#241814]/70
-
-                                    sm:text-sm
-                                    sm:leading-7
-                                "
-                            >
-                                Have a project in mind, a collaboration idea,
-                                or just want to say hello? Send me a message
-                                and I'll get back to you as soon as possible.
-                            </p>
-
-                            <motion.h2
-                                initial={{
-                                    opacity: 0,
-                                    y: 30,
-                                }}
-                                whileInView={{
-                                    opacity: 1,
-                                    y: 0,
-                                }}
-                                viewport={{ once: true }}
-                                transition={{
-                                    duration: 0.8,
-                                    delay: 0.15,
-                                }}
-                                className="
-                                    my-10
-
-                                    text-[clamp(4rem,17vw,9rem)]
-
-                                    font-black
-                                    uppercase
-                                    leading-[0.78]
-                                    tracking-[-0.07em]
-
-                                    sm:my-14
-                                    sm:text-[16vw]
-
-                                    md:text-[11vw]
-
-                                    lg:text-[7vw]
-                                "
-                            >
-                                Let's
-                                <br />
-                                talk.
-                            </motion.h2>
-
-                            {/* EMAIL */}
-
-                            <div>
-
-                                <div
-                                    className="
-                                        mb-3
-
-                                        flex
-                                        items-center
-                                        gap-3
-
-                                        text-[8px]
-                                        font-semibold
-                                        uppercase
-                                        tracking-[0.18em]
-
-                                        text-[#7A263A]
-                                    "
-                                >
-                                    <Mail size={14} />
-
-                                    Email
-                                </div>
-
-                                <a
-                                    href="mailto:edv.jumana2007@gmail.com"
-                                    className="
-                                        inline-flex
-                                        max-w-full
-                                        items-center
-                                        gap-2
-
-                                        break-all
-
-                                        text-[12px]
-                                        font-medium
-
-                                        transition-colors
-                                        duration-300
-
-                                        hover:text-[#7A263A]
-
-                                        sm:text-sm
-                                    "
-                                >
-                                    edv.jumana2007@gmail.com
-
-                                    <ArrowUpRight
-                                        size={14}
-                                        className="shrink-0"
-                                    />
-                                </a>
-
-                            </div>
-
+                            <p className="contact-details-intro">Prefer email? Reach out directly, or connect with me on my professional profiles.</p>
+                            <a className="contact-info-card" href="mailto:edv.jumana2007@gmail.com">
+                                <span className="contact-info-icon"><Mail size={17} /></span>
+                                <span><small>Email</small><strong>edv.jumana2007@gmail.com</strong></span>
+                                <ArrowUpRight size={16} className="contact-info-arrow" />
+                            </a>
+                            <a className="contact-info-card" href="https://github.com/jumana2025" target="_blank" rel="noreferrer">
+                                <span className="contact-info-icon contact-text-icon">GH</span>
+                                <span><small>GitHub</small><strong>View my projects</strong></span>
+                                <ArrowUpRight size={16} className="contact-info-arrow" />
+                            </a>
+                            <a className="contact-info-card" href="https://www.linkedin.com/in/jumana-p" target="_blank" rel="noreferrer">
+                                <span className="contact-info-icon contact-text-icon">in</span>
+                                <span><small>LinkedIn</small><strong>Let’s connect</strong></span>
+                                <ArrowUpRight size={16} className="contact-info-arrow" />
+                            </a>
+                            <div className="contact-availability"><span /> Open to thoughtful collaborations</div>
                         </motion.div>
 
                         {/* FORM */}
@@ -309,11 +191,7 @@ export const Contact = () => {
                                 duration: 0.9,
                                 delay: 0.1,
                             }}
-                            className="
-                                w-full
-                                min-w-0
-                                space-y-6
-                            "
+                            className="contact-form w-full min-w-0 space-y-6"
                         >
 
                             {/* NAME + EMAIL */}
@@ -323,7 +201,6 @@ export const Contact = () => {
                                     grid
                                     grid-cols-1
                                     gap-6
-
                                     md:grid-cols-2
                                 "
                             >
@@ -331,18 +208,15 @@ export const Contact = () => {
                                 {/* NAME */}
 
                                 <div className="w-full">
-
                                     <label
                                         htmlFor="name"
                                         className="
                                             mb-2
                                             block
-
                                             text-[8px]
                                             font-semibold
                                             uppercase
                                             tracking-[0.18em]
-
                                             text-[#7A263A]
                                         "
                                     >
@@ -358,44 +232,32 @@ export const Contact = () => {
                                         autoComplete="name"
                                         className="
                                             w-full
-
                                             border-b
                                             border-[#241814]/30
-
                                             bg-transparent
-
                                             px-0
                                             py-3.5
-
                                             text-[13px]
-
                                             outline-none
-
                                             placeholder:text-[#241814]/40
-
                                             focus:border-[#7A263A]
-
                                             sm:text-sm
                                         "
                                     />
-
                                 </div>
 
                                 {/* EMAIL */}
 
                                 <div className="w-full">
-
                                     <label
                                         htmlFor="email"
                                         className="
                                             mb-2
                                             block
-
                                             text-[8px]
                                             font-semibold
                                             uppercase
                                             tracking-[0.18em]
-
                                             text-[#7A263A]
                                         "
                                     >
@@ -411,46 +273,33 @@ export const Contact = () => {
                                         autoComplete="email"
                                         className="
                                             w-full
-
                                             border-b
                                             border-[#241814]/30
-
                                             bg-transparent
-
                                             px-0
                                             py-3.5
-
                                             text-[13px]
-
                                             outline-none
-
                                             placeholder:text-[#241814]/40
-
                                             focus:border-[#7A263A]
-
                                             sm:text-sm
                                         "
                                     />
-
                                 </div>
-
                             </div>
 
                             {/* MESSAGE */}
 
                             <div className="w-full">
-
                                 <label
                                     htmlFor="message"
                                     className="
                                         mb-2
                                         block
-
                                         text-[8px]
                                         font-semibold
                                         uppercase
                                         tracking-[0.18em]
-
                                         text-[#7A263A]
                                     "
                                 >
@@ -466,32 +315,23 @@ export const Contact = () => {
                                     className="
                                         w-full
                                         resize-none
-
                                         border-b
                                         border-[#241814]/30
-
                                         bg-transparent
-
                                         px-0
                                         py-3.5
-
                                         text-[13px]
                                         leading-6
-
                                         outline-none
-
                                         placeholder:text-[#241814]/40
-
                                         focus:border-[#7A263A]
-
                                         sm:text-sm
                                         sm:leading-7
                                     "
                                 />
-
                             </div>
 
-                            {/* SUCCESS */}
+                            {/* SUCCESS MESSAGE */}
 
                             {sent && (
                                 <motion.p
@@ -514,7 +354,7 @@ export const Contact = () => {
                                 </motion.p>
                             )}
 
-                            {/* ERROR */}
+                            {/* ERROR MESSAGE */}
 
                             {error && (
                                 <motion.p
@@ -543,42 +383,30 @@ export const Contact = () => {
                                 disabled={loading}
                                 className="
                                     group
-
                                     inline-flex
                                     w-full
-
                                     items-center
                                     justify-center
                                     gap-3
-
                                     border
                                     border-[#7A263A]
-
                                     bg-[#7A263A]
-
                                     px-6
                                     py-4
-
                                     text-[8px]
                                     font-semibold
                                     uppercase
                                     tracking-[0.18em]
-
                                     text-[#F4EBDD]
-
                                     transition-all
                                     duration-300
-
                                     hover:border-[#241814]
                                     hover:bg-[#241814]
-
                                     disabled:cursor-not-allowed
                                     disabled:opacity-60
-
                                     sm:w-auto
                                 "
                             >
-
                                 {loading ? (
                                     "Sending..."
                                 ) : (
@@ -590,25 +418,18 @@ export const Contact = () => {
                                             className="
                                                 transition-transform
                                                 duration-300
-
                                                 group-hover:translate-x-1
                                                 group-hover:-translate-y-1
                                             "
                                         />
                                     </>
                                 )}
-
                             </button>
-
                         </motion.form>
-
                     </div>
-
                 </div>
-
             </section>
-
-        </main>
+        </section>
     );
 };
 
