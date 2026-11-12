@@ -13,7 +13,7 @@ export default function Home() {
 
       <div className="max-w-5xl">
         <p className="mb-6 font-mono text-xs uppercase tracking-[0.25em] text-blue-300">
-          Software Developer · Full Stack · Creative Technologist
+          Web Developer · React · Full Stack
         </p>
 
         <h1 className="font-['Syne'] text-5xl font-bold leading-[0.92] tracking-[-0.07em] sm:text-7xl lg:text-[clamp(4rem,8vw,8rem)]">
@@ -25,7 +25,7 @@ export default function Home() {
         </h1>
 
         <p className="mt-8 max-w-xl text-sm leading-7 text-slate-300 sm:text-base">
-          I build clean, responsive and purposeful digital products that turn ideas into memorable web experiences.
+          I&apos;m Jumana P, a web developer focused on React and full-stack applications. I build responsive, purposeful digital products that turn ideas into memorable web experiences.
         </p>
 
         <div className="mt-8 flex flex-wrap items-center gap-4">

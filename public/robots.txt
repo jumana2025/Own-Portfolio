@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jumanap-in-gamma.vercel.app/sitemap.xml

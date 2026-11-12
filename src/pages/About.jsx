@@ -50,7 +50,7 @@ export default function About() {
                 <div className="relative mx-auto w-full max-w-[426px] lg:col-start-1 lg:row-start-1 lg:order-first">
                     <div className="absolute -inset-3 rounded-sm border border-blue-500/20" />
                     <div className="relative overflow-hidden rounded-sm bg-slate-900">
-                        <img src="/Proffessionalimage.png" alt="Professional image of Jumana, software developer" className="aspect-[4/5] w-full object-cover grayscale transition duration-700 hover:scale-105 hover:grayscale-0" />
+                        <img src="/Proffessionalimage.png" alt="Jumana P, web developer" className="aspect-[4/5] w-full object-cover  transition duration-700 hover:scale-105 hover:grayscale-0" />
                         <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/90 to-transparent" />
                     </div>
                     <div className="absolute -bottom-5 right-0 border border-white/10 bg-[#111214] px-5 py-4 shadow-2xl sm:right-[-18px]">
