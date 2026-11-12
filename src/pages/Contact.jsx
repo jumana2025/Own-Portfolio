@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { ArrowUpRight, Mail, Send } from "lucide-react";
+import { motion as Motion } from "framer-motion";
+import { ArrowUpRight, Mail, Phone, Send } from "lucide-react";
+import { socialLinks } from "../data/socialLinks";
 
 export const Contact = () => {
     const [loading, setLoading] = useState(false);
@@ -105,7 +106,7 @@ export const Contact = () => {
 
                     {/* LABEL */}
 
-                    <motion.div
+                    <Motion.div
                         initial={{
                             opacity: 0,
                             y: -20,
@@ -118,19 +119,19 @@ export const Contact = () => {
                         transition={{ duration: 0.7 }}
                         className="contact-kicker mb-8 text-[8px] font-medium uppercase tracking-[0.25em] text-[#7A263A] sm:mb-10"
                     >
-                        <span /> Get in touch
-                    </motion.div>
+                        <span /> Contact
+                    </Motion.div>
 
-                    <motion.div
+                    <Motion.div
                         className="contact-heading"
                         initial={{ opacity: 0, y: 22 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.7 }}
                     >
-                        <h2>Let’s build something <span>great.</span></h2>
-                        <p>Share a little about what you’re working on. I’ll read every message and get back to you as soon as I can.</p>
-                    </motion.div>
+                        <h2>Let’s build something <span>unforgettable.</span></h2>
+                        <p>Have a project in mind? Share a few details and I’ll get back to you as soon as I can.</p>
+                    </Motion.div>
 
                     {/* CONTENT */}
 
@@ -140,7 +141,7 @@ export const Contact = () => {
 
                         {/* LEFT */}
 
-                        <motion.div
+                        <Motion.div
                             initial={{
                                 opacity: 0,
                                 x: -40,
@@ -155,28 +156,33 @@ export const Contact = () => {
                             }}
                             className="contact-details w-full"
                         >
-                            <p className="contact-details-intro">Prefer email? Reach out directly, or connect with me on my professional profiles.</p>
+                            <p className="contact-details-intro">Have a question or want to work together? Send me a message or connect through my profiles.</p>
                             <a className="contact-info-card" href="mailto:edv.jumana2007@gmail.com">
                                 <span className="contact-info-icon"><Mail size={17} /></span>
                                 <span><small>Email</small><strong>edv.jumana2007@gmail.com</strong></span>
                                 <ArrowUpRight size={16} className="contact-info-arrow" />
                             </a>
-                            <a className="contact-info-card" href="https://github.com/jumana2025" target="_blank" rel="noreferrer">
-                                <span className="contact-info-icon contact-text-icon">GH</span>
-                                <span><small>GitHub</small><strong>View my projects</strong></span>
+                            <a className="contact-info-card" href="tel:7306519056">
+                                <span className="contact-info-icon"><Phone size={17} /></span>
+                                <span><small>Phone</small><strong>7306519056</strong></span>
                                 <ArrowUpRight size={16} className="contact-info-arrow" />
                             </a>
-                            <a className="contact-info-card" href="https://www.linkedin.com/in/jumana-p" target="_blank" rel="noreferrer">
-                                <span className="contact-info-icon contact-text-icon">in</span>
-                                <span><small>LinkedIn</small><strong>Let’s connect</strong></span>
-                                <ArrowUpRight size={16} className="contact-info-arrow" />
-                            </a>
+                            <div className="contact-socials">
+                                <p>Find me on</p>
+                                <div>
+                                    {socialLinks.map(({ label, href, icon: Icon }) => (
+                                        <a key={label} href={href} target="_blank" rel="noreferrer" aria-label={label} title={label}>
+                                            {React.createElement(Icon, { size: 16, "aria-hidden": true })}
+                                        </a>
+                                    ))}
+                                </div>
+                            </div>
                             <div className="contact-availability"><span /> Open to thoughtful collaborations</div>
-                        </motion.div>
+                        </Motion.div>
 
                         {/* FORM */}
 
-                        <motion.form
+                        <Motion.form
                             onSubmit={handleSubmit}
                             initial={{
                                 opacity: 0,
@@ -196,14 +202,7 @@ export const Contact = () => {
 
                             {/* NAME + EMAIL */}
 
-                            <div
-                                className="
-                                    grid
-                                    grid-cols-1
-                                    gap-6
-                                    md:grid-cols-2
-                                "
-                            >
+                            <div className="contact-field-grid">
 
                                 {/* NAME */}
 
@@ -288,6 +287,31 @@ export const Contact = () => {
                                 </div>
                             </div>
 
+                            <div className="contact-field-grid">
+                                <div className="w-full">
+                                    <label htmlFor="phone">Phone Number</label>
+                                    <input
+                                        id="phone"
+                                        type="tel"
+                                        name="phone"
+                                        placeholder="Your phone number"
+                                        autoComplete="tel"
+                                    />
+                                </div>
+
+                                <div className="w-full">
+                                    <label htmlFor="projectType">Project Type</label>
+                                    <select id="projectType" name="projectType" defaultValue="">
+                                        <option value="" disabled>Select a project type</option>
+                                        <option value="Web application">Web application</option>
+                                        <option value="Business website">Business website</option>
+                                        <option value="E-commerce">E-commerce</option>
+                                        <option value="UI development">UI development</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+
                             {/* MESSAGE */}
 
                             <div className="w-full">
@@ -310,7 +334,7 @@ export const Contact = () => {
                                     id="message"
                                     name="message"
                                     rows={6}
-                                    placeholder="Tell me about your project..."
+                                    placeholder="Tell me about your idea, goals, and timeline..."
                                     required
                                     className="
                                         w-full
@@ -334,7 +358,7 @@ export const Contact = () => {
                             {/* SUCCESS MESSAGE */}
 
                             {sent && (
-                                <motion.p
+                                <Motion.p
                                     initial={{
                                         opacity: 0,
                                         y: 10,
@@ -351,13 +375,13 @@ export const Contact = () => {
                                 >
                                     ✓ Message sent successfully.
                                     I'll get back to you soon.
-                                </motion.p>
+                                </Motion.p>
                             )}
 
                             {/* ERROR MESSAGE */}
 
                             {error && (
-                                <motion.p
+                                <Motion.p
                                     initial={{
                                         opacity: 0,
                                         y: 10,
@@ -373,7 +397,7 @@ export const Contact = () => {
                                     "
                                 >
                                     {error}
-                                </motion.p>
+                                </Motion.p>
                             )}
 
                             {/* BUTTON */}
@@ -425,7 +449,7 @@ export const Contact = () => {
                                     </>
                                 )}
                             </button>
-                        </motion.form>
+                        </Motion.form>
                     </div>
                 </div>
             </section>

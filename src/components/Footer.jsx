@@ -1,4 +1,5 @@
 import React from "react";
+import { socialLinks } from "../data/socialLinks";
 
 const quickLinks = [
   ["Home", "#home"],
@@ -14,7 +15,7 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="footer-main">
         <div className="footer-brand-block">
-          <a className="footer-brand" href="#home">JUMANA<span>.</span></a>
+          <a className="footer-brand" href="#home">JUMANAP<span>.</span>IN</a>
           <p>Thoughtful digital experiences, built with care and a little curiosity.</p>
           <a className="footer-contact-link" href="#contact">Have a project in mind? <span aria-hidden="true">↗</span></a>
         </div>
@@ -31,15 +32,19 @@ export default function Footer() {
 
         <div className="footer-column footer-social-column">
           <h2>Connect</h2>
-          <a href="https://github.com/jumana2025" target="_blank" rel="noreferrer"><span className="footer-github-mark" aria-hidden="true">GH</span> GitHub</a>
-          <a href="https://www.linkedin.com/in/jumana-p" target="_blank" rel="noreferrer"><span className="footer-github-mark" aria-hidden="true">in</span> LinkedIn</a>
-          <a href="https://www.instagram.com/jumanap.in/" target="_blank" rel="noreferrer"><span className="footer-github-mark" aria-hidden="true">ig</span> Instagram</a>
+          <div className="footer-social-icons">
+            {socialLinks.map(({ label, href, icon: Icon }) => (
+              <a key={label} href={href} target="_blank" rel="noreferrer" aria-label={label} title={label}>
+                {React.createElement(Icon, { size: 16, "aria-hidden": true })}
+              </a>
+            ))}
+          </div>
           <a href="mailto:jumana.edv@gmail.com"><span className="footer-github-mark" aria-hidden="true">@</span> Email</a>
         </div>
       </div>
 
       <div className="footer-bottom">
-        <span>© {new Date().getFullYear()} Jumana. All rights reserved.</span>
+        <span>© {new Date().getFullYear()} Jumanap.in All rights reserved.</span>
         <a href="#home">Back to top <span aria-hidden="true">↗</span></a>
         <span>Designed & built with intention.</span>
       </div>
